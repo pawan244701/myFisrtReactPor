@@ -1,13 +1,19 @@
+import './Navbar.css'
 export const Navbar = () => {
     return (
-        <div>
-            <a href="#" > <img src="#" alt="Logo" />Logo</a>
-            <a href="#" >Home</a>
-            <a href="#" >Games</a>
-            <a href="#" >Anime</a>
-
-            <button type="submit">Login</button>
-            <button type="submit">Signup</button>
+        <div className="main-container">
+            <div className="logo-container">
+                <a href="#" >Logo</a>
+            </div>
+            <div className='nav-links-container'>
+                <a href="#" className='nav-links'>Home</a>
+                <a href="#" className='nav-links'>Games</a>
+                <a href="#" className='nav-links'>Anime</a>
+            </div>
+            <div className='nav-button-container'>
+                <button>Login</button>
+                <button>Signup</button>
+            </div>
         </div>
     )
 }
