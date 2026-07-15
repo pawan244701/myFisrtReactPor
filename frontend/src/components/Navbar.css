@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    text-decoration: none;
+}
+
 .main-container {
     height: 55px;
     background-color: mediumaquamarine;
@@ -24,11 +31,46 @@ a {
     color: black;
     text-decoration: none;
 }
+
 button {
     border: none;
     background-color: mediumaquamarine;
     transition: transform 0.3s ease-in-out;
 }
+
 a:hover, button:hover {
     transform: scale(1.1);
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+@media (max-width:700px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links-container, .nav-button-container {
+        display: none;
+    }
+
+    .nav-links-container.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 4.8rem;
+        right: 0rem;
+        width: 45%;
+        height: 55%;
+        background-color: mediumaquamarine;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .main-container {
+        margin: 1rem 0rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
 }
