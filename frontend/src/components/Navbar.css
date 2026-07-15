@@ -5,6 +5,20 @@
     text-decoration: none;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background-color: mediumaquamarine;
+}
+
+a:hover, button:hover {
+    transform: scale(1.1);
+}
+
 .main-container {
     height: 55px;
     background-color: mediumaquamarine;
@@ -19,7 +33,12 @@
 .logo-container {
     border-radius: 1rem;
     padding: 0.5rem;
+}
+
+.toggle-container {
     display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .nav-links-container, .nav-button-container {
@@ -27,50 +46,39 @@
     gap: 1rem;
 }
 
-a {
-    color: black;
-    text-decoration: none;
-}
-
-button {
-    border: none;
-    background-color: mediumaquamarine;
-    transition: transform 0.3s ease-in-out;
-}
-
-a:hover, button:hover {
-    transform: scale(1.1);
-}
-
 .hamburger-menu {
     display: none;
 }
 
 @media (max-width:555px) {
+    .main-container {
+        background-color: mediumaquamarine;
+    }
+
     .hamburger-menu {
         display: block;
     }
 
-    .nav-links-container, .nav-button-container {
+    .toggle-container {
         display: none;
+
     }
 
-    .nav-links-container.open {
+    .toggle-container.open {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 4.8rem;
         right: 0rem;
+        top: 4.7rem;
         width: 45%;
         height: 55%;
         background-color: mediumaquamarine;
         padding: 1rem;
-        border-radius: 1rem;
+        border-radius: 0rem 2rem;
+        z-index: 10;
     }
-
-    .main-container {
-        margin: 1rem 0rem;
-        padding: 1rem;
-        border-radius: 1rem;
+    .toggle-container.open .nav-links-container,
+    .toggle-container.open .nav-button-container {
+        flex-direction: column;
     }
 }
