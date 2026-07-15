@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Navbar } from './components/Navbar'
+import { Signup } from './components/Signup'
 import './App.css'
 
 function App() {
@@ -10,14 +12,8 @@ function App() {
 
   return (
     <div>
-    <form onSubmit={formFuck}>
-      <h1>Login Form</h1>
-      <label htmlFor="email">Enter Email</label>
-      <input type="email" id='email' name='email' placeholder='example@email.com' autoComplete='email' required/>
-      <label htmlFor="password">Password</label>
-      <input type="password" id='password' name='password' placeholder='pass123*&^' autoComplete='current-password' required />
-      <button type='submit'>Login</button>
-    </form>
+      <Navbar />
+      <Signup />
     </div>
   )
 }
