@@ -3,11 +3,12 @@ export const Signup = () => {
     return (
         <main className={styles['signup-body']}>
             <div className={styles['signup-container']}>
-                <h1 className={styles['signup-h1']}>Signup</h1>
                 <form className={styles['signup-form']}>
+                <h1 className={styles['signup-h1']}>Signup</h1>
+
                     <div className={styles['input-group']}>
                         <label className={styles['signup-label']} htmlFor="username">Enter Username</label>
-                        <input className={styles['signup-input']} type="text" id="username" placeholder="my name" autoComplete="username" required />
+                        <input className={styles['signup-input']} type="text" id="username" placeholder="Username" autoComplete="username" required />
                     </div>
                     <div className={styles['input-group']}>
                         <label className={styles['signup-label']} htmlFor="email">Enter Email</label>
