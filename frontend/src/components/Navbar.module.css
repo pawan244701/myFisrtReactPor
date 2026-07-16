@@ -1,21 +1,14 @@
-* {
-    box-sizing: border-box;
-    margin: 0%;
-    padding: 0%;
-    text-decoration: none;
-}
-
-a {
+.logo-links, .nav-links {
     color: black;
     text-decoration: none;
 }
 
-button {
+.nav-buttons {
     border: none;
     background-color: mediumaquamarine;
 }
 
-a:hover, button:hover {
+.nav-links:hover, .nav-buttons:hover {
     transform: scale(1.1);
 }
 
