@@ -8,7 +8,7 @@ import './Home.module.css';
 export const Home = () => {
     const [activePage, setActivePage] = useState('Home');
     const navTo = (pageName) => {
-        setActivePage((currrentState) => currrentState === pageName ? 'Home' : pageName);
+        setActivePage((currentState) => currentState === pageName ? 'Home' : pageName);
     }
 
     return (
