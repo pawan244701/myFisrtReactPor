@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/* <Signup /> */}
+      <Signup />
     </div>
   )
 }
