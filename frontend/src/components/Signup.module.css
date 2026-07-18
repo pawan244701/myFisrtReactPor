@@ -56,6 +56,7 @@
 
 .signup-button:hover {
     transform: scale(1.1);
+    background-color: rgb(28, 237, 167);
 }
 
 .signup-h1 {
