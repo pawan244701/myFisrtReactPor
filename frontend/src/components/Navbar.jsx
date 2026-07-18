@@ -25,7 +25,7 @@ export const Navbar = ({onSignupClick, onLoginClick}) => {
                     <button className={styles['nav-buttons']} onClick={onSignupClick}>Signup</button>
                 </div>
             </div>
-            <button className={styles['hamburger-menu']}>&#9776;</button>
+            <button className={styles['hamburger-menu']} onClick={toggleMenu} >&#9776;</button>
         </div>
     );
 };

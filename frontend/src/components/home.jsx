@@ -14,6 +14,12 @@ export const Home = () => {
     return (
         <div>
             <Navbar onLoginClick={() => navTo('login')} onSignupClick={() => navTo('signup')} />
+
+
+            {/* //1st on page load : activePage is home bcoz we've passed in USESTATE() so is home === signup FALSE don't even look at other side
+            //2nd time clicking signup : activePage is signup page now condition is TRUE show the signup page */}
+            
+            
             {activePage === 'signup' && <Signup />}
             {activePage === 'login' && <Login />}
         </div>
