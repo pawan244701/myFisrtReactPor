@@ -22,7 +22,7 @@ export const Signup = () => {
                         <label className={styles['signup-label']} htmlFor="confirmPassword">Re-enter Password</label>
                         <input className={styles['signup-input']} type="password" id="confirmPassword" placeholder="my$#%46pdhF76" autoComplete="current-password" required />
                     </div>
-                    <button className={styles['signup-button']} type="submit">Submit</button>
+                    <button className={styles['signup-button']} type="submit">Signup</button>
                 </form>
             </div>
         </main>
