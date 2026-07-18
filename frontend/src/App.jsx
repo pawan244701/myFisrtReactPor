@@ -1,19 +1,29 @@
 import { useState } from 'react'
 import { Navbar } from './components/Navbar'
 import { Signup } from './components/Signup'
+import { Login } from './components/Login'
+
 import './App.css'
 
 function App() {
-  const formFuck = (event) => {
-    event.preventDefault();
-    alert('it is new React learning project yuou will definetly find someting within few days');
-    event.target.reset();
+  const [showSignup, setShowSignup] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+
+  const toggleSignup = () => {
+    setShowSignup(previousState => !previousState);
+    setShowLogin(false);
   }
+  const toggleLogin = () => {
+    setShowLogin(previousState => !previousState);
+    setShowSignup(false);
+  }
+
 
   return (
     <div>
-      <Navbar />
-      <Signup />
+      <Navbar onSignupClick={toggleSignup} onLoginClick={toggleLogin}/>
+      {showSignup && <Signup />}
+      {showLogin && <Login />}
     </div>
   )
 }

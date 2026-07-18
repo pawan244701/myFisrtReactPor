@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Navbar.module.css';
 
-export const Navbar = () => {
+export const Navbar = ({onSignupClick, onLoginClick}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -21,11 +21,11 @@ export const Navbar = () => {
                 </div>
             
                 <div className={styles['nav-button-container']}>
-                    <button className={styles['nav-buttons']}>Login</button>
-                    <button className={styles['nav-buttons']}>Signup</button>
+                    <button className={styles['nav-buttons']} onClick={onLoginClick}>Login</button>
+                    <button className={styles['nav-buttons']} onClick={onSignupClick}>Signup</button>
                 </div>
             </div>
-            <button className={styles['hamburger-menu']} onClick={toggleMenu}>&#9776;</button>
+            <button className={styles['hamburger-menu']}>&#9776;</button>
         </div>
     );
 };
