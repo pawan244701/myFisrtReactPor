@@ -11,10 +11,14 @@ import { Contact } from './pages/Contact';
 import { Games } from './pages/Games';
 
 import './App.css';
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
     <div>
+      <Navbar />
+      {/* placed here so that it can be renderd on all pages. */}
       <Routes>
         {/* Routes : thsi will be holding all of our route */}
 
@@ -29,6 +33,7 @@ function App() {
         <Route path='/games' element={<Games />} />
         {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
       </Routes>
+      <Footer />
     </div>
   )
 }

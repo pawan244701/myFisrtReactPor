@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import styles from './Navbar.module.css';
 
-export const Navbar = ({onSignupClick, onLoginClick}) => {
+export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -14,16 +16,11 @@ export const Navbar = ({onSignupClick, onLoginClick}) => {
             </div >
 
             <div className={`${styles['toggle-container']} ${isOpen ? styles.open : ''}`}>
-                <div className={styles['nav-links-container']}>
-                    <a href="#" className={styles['nav-links']}>Home</a>
-                    <a href="#" className={styles['nav-links']}>Games</a>
-                    <a href="#" className={styles['nav-links']}>Anime</a>
-                </div>
-            
-                <div className={styles['nav-button-container']}>
-                    <button className={styles['nav-buttons']} onClick={onLoginClick}>Login</button>
-                    <button className={styles['nav-buttons']} onClick={onSignupClick}>Signup</button>
-                </div>
+                    <Link to='/home' className={styles['nav-links']}>Home</Link>
+                    <Link to='/games' className={styles['nav-links']}>Games</Link>
+                    <Link to='' className={styles['nav-links']}>Anime</Link>
+                    <Link to='/login' className={styles['nav-links']}>Login</Link>
+                    <Link to='/signup' className={styles['nav-links']}>Signup</Link>
             </div>
             <button className={styles['hamburger-menu']} onClick={toggleMenu} >&#9776;</button>
         </div>

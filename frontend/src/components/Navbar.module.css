@@ -34,11 +34,6 @@
     gap: 1rem;
 }
 
-.nav-links-container, .nav-button-container {
-    display: flex;
-    gap: 1rem;
-}
-
 .hamburger-menu {
     display: none;
 }
@@ -70,8 +65,8 @@
         border-radius: 0rem 2rem;
         z-index: 10;
     }
-    .toggle-container.open .nav-links-container,
-    .toggle-container.open .nav-button-container {
+    .toggle-container.open,
+    .toggle-container.open {
         flex-direction: column;
     }
-}
+} 
