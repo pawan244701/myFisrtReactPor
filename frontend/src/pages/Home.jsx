@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Navbar } from './Navbar'
-import { Login } from "./Login";
+import { Navbar } from '../components/Navbar'
+import { Login } from "../components/Login";
 import { Signup } from './Signup';
 
 import './Home.module.css';
