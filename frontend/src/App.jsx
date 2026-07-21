@@ -7,8 +7,7 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { Privacy } from './pages/Privacy';
 import { About } from './pages/About';
-import { Contacts } from './pages/Contacts';
-import { Footer } from './pages/Footer';
+import { Contact } from './pages/Contact';
 import { Games } from './pages/Games';
 
 import './App.css';
@@ -26,9 +25,9 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/privacy' element={<Privacy />} />
         <Route path='/about' element={<About />} />
-        <Route path='/contacts' element={<Contacts />} />
-        <Route path='/footer' element={<Footer />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/games' element={<Games />} />
+        {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
       </Routes>
     </div>
   )
