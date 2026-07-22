@@ -1,26 +1,23 @@
 .logo-links, .nav-links {
-    color: black;
+    color: #ffffff;
     text-decoration: none;
+    transition: transform 0.3s ease-in-out;
 }
 
-.nav-buttons {
-    border: none;
-    background-color: mediumaquamarine;
-}
-
-.nav-links:hover, .nav-buttons:hover {
+.nav-links:hover {
     transform: scale(1.1);
 }
 
 .main-container {
     height: 55px;
-    background-color: mediumaquamarine;
+    background-color: #0d9488;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 1rem;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 0rem 2rem;
+    border: 2px solid #115e59;
 }
 
 .logo-container {
@@ -40,7 +37,8 @@
 
 @media (max-width:555px) {
     .main-container {
-        background-color: mediumaquamarine;
+        background-color: #0d9488;
+        margin: 1.5rem .5rem;
     }
 
     .hamburger-menu {
@@ -60,7 +58,7 @@
         top: 4.7rem;
         width: 45%;
         height: 55%;
-        background-color: mediumaquamarine;
+        background-color: #115e59;
         padding: 1rem;
         border-radius: 0rem 2rem;
         z-index: 10;
