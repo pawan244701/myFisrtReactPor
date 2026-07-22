@@ -1,60 +1,61 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import styles from './Footer.module.css'
 
 export const Footer = () => {
     return (
-        <footer>
-            <section>
-                <article>
+        <footer className={styles['main-footer']}>
+            <section className={styles['main-section']}>
+                <article className={styles['articles-navigations']}>
                     <h3>Pawan Yadav</h3>
                     <p>A portfolio & experimental web project built with React.</p>
                 </article>
 
-                <article>
+                <article className={styles['articles-navigations']}>
                     <h4>Navigation</h4>
                     <ul>
-                        <li>
+                        <li className={styles['list']}>
                             <Link to="/home">Home</Link>
                         </li>
-                        <li>
+                        <li className={styles['list']}>
                             <a
                                 href='/about'
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >About</a>
                         </li>
-                        <li>
+                        <li className={styles['list']}>
                             <a
                                 href='/privacy'
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >Privacy-Policy</a>
                         </li>
-                        <li>
+                        <li className={styles['list']}>
                             <Link to="/games">Games</Link>
                         </li>
-                        <li>
+                        <li className={styles['list']}>
                             <Link to="/contact">Contact</Link>
                         </li>
                     </ul>
                 </article>
 
-                <nav>
+                <nav className={styles['articles-navigations']}>
                     <h4>Connect with me</h4>
                     <ul>
-                        <li><a
+                        <li className={styles['list']}><a
                             href="https://github.com/pawan244701"
                             target="_blank"
                             rel="noopener noreferrer"
                         >GitHub</a></li>
 
-                        <li><a
+                        <li className={styles['list']}><a
                             href="https://linkedin.com/in/pawan244701"
                             target="_blank"
                             rel="noopener noreferrer"
                         >LinkedIn</a></li>
 
-                        <li><a
+                        <li className={styles['list']}><a
                             href="https://x.com/pawan244701"
                             target='_blank'
                             rel='noopener noreferrer'
@@ -63,7 +64,7 @@ export const Footer = () => {
                 </nav>
             </section>
 
-            <small>&copy; {new Date().getFullYear()} pawan244701. Open-Source Project.</small>
+            <small>&copy; {new Date().getFullYear()} pawan244701. <strong>Open-Source Project.</strong></small>
 
         </footer>
     )
