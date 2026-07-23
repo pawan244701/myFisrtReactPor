@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './About.module.css'
 
 export const About = () => {
   return (
-    <main>
-      <header>
+    <main className={styles['main-container']}>
+      <header className={styles['header-container']}>
         <h1>About This Portfolio & Experiments Site</h1>
         <p>
           <strong>Live Site: </strong>
           <a 
             href="https://pawan244701-react.onrender.com" 
-            target="_blank" 
             rel="noopener noreferrer"
+            className={styles['link']}
           >
             pawan244701-react.onrender.com
           </a>
         </p>
       </header>
 
-      <section>
+      <section className={styles['main-section']}>
         <h2>Hi, I am Pawan Yadav — Eager to Learn Every Single New Thing</h2>
         <article>
           <p>
@@ -33,18 +34,18 @@ export const About = () => {
         </article>
       </section>
 
-      <section>
+      <section className={styles['main-section']}>
         <h2>Tech Stack & Tools</h2>
 
         <article>
-          <h3>Design & UI/UX</h3>
+          <h3 className={styles['heading3']}>Design & UI/UX</h3>
           <ul>
             <li>Figma</li>
           </ul>
         </article>
 
         <article>
-          <h3>Core Web Technologies</h3>
+          <h3 className={styles['heading3']}>Core Web Technologies</h3>
           <ul>
             <li>HTML5</li>
             <li>CSS3</li>
@@ -53,7 +54,7 @@ export const About = () => {
         </article>
 
         <article>
-          <h3>Libraries & Frameworks</h3>
+          <h3 className={styles['heading3']}>Libraries & Frameworks</h3>
           <ul>
             <li>React.js</li>
             <li>React Router</li>
@@ -61,7 +62,7 @@ export const About = () => {
         </article>
 
         <article>
-          <h3>Build Tools & Environment</h3>
+          <h3 className={styles['heading3']}>Build Tools & Environment</h3>
           <ul>
             <li>Vite</li>
             <li>npm</li>
@@ -69,7 +70,7 @@ export const About = () => {
         </article>
       </section>
 
-      <section>
+      <section className={styles['main-section']}>
         <h2>Project Source & Social Media</h2>
         <p>
           Want to review the code? The blueprint of this platform is entirely open-source. 
@@ -81,6 +82,7 @@ export const About = () => {
             <li>
               <span>Inspect the source code on: </span>
               <a 
+              className={styles['link']}
                 href="https://github.com/pawan244701/" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -91,6 +93,7 @@ export const About = () => {
             <li>
               <span>Connect with me on: </span>
               <a 
+              className={styles['link']}
                 href="https://linkedin.com/in/pawan244701/" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -101,6 +104,7 @@ export const About = () => {
             <li>
               <span>Follow me on: </span>
               <a 
+              className={styles['link']}
                 href="https://x.com/pawan244701/" 
                 target="_blank" 
                 rel="noopener noreferrer"
