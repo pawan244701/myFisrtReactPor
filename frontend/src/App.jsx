@@ -10,7 +10,7 @@ import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Games } from './pages/Games';
 
-import './App.css';
+import styles from './App.module.css';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
