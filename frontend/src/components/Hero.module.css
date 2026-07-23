@@ -28,7 +28,13 @@
     border-radius: 0rem 1rem;
     border: 2px solid #115e59;
 }
+.linkedin:hover {
+    color: #0000ff;
+}
 
+p {
+    padding: 0.2rem;
+}
 @media (max-width:555px) {
     .main-sectoin {
         margin: .5rem;
