@@ -18,6 +18,10 @@
     padding: 1rem;
     border-radius: 0rem 2rem;
     border: 2px solid #115e59;
+
+    position: sticky;
+    top: 1.5rem;
+    z-index: 1000;
 }
 
 .logo-container {
