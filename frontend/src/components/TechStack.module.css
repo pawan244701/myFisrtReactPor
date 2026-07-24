@@ -1,3 +1,57 @@
 .main-section {
-    background-color: aqua;
+    width: 80%;
+    margin: 2rem;
+    padding: 2rem;
+    border: 2px solid #115e59;
+    border-radius: 0rem 2rem;
+    text-align: center;
+}
+
+.secondery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.stack-card {
+    margin: 2rem;
+    border: 2px solid #115e59;
+    border-radius: 0rem 2rem;
+    background-color: #0d9488;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    text-align: left;
+}
+
+.stack-card:hover {
+    transform: scale(1.05);
+}
+
+.stack-card ul {
+    color: #ffffff;
+    opacity: 0;
+    padding-bottom: 1rem;
+}
+
+.stack-card:hover ul {
+    opacity: 1;
+}
+
+@media (max-width:555px) {
+    .main-section {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .stack-card {
+        margin: 0.5rem;
+    }
+
+    .stack-card:hover {
+        transform: none;
+    }
+
+    .stack-card ul {
+        opacity: 1;
+    }
 }
