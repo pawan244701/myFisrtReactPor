@@ -1,9 +1,10 @@
 .main-container {
-    /* background-color: #0d9488; */
+    width: 90%;
     padding: 2rem;
-    margin: 2rem;
+    margin: 2rem auto;
     border: 2px solid #115e59;
     border-radius: 0rem 2rem;
+    box-sizing: border-box;
 }
 
 .header-container, .main-section {
@@ -13,9 +14,7 @@
     border: 2px solid #115e59;
     border-radius: 0rem 2rem;
     color: #f4f7f6;
-
 }
-
 
 .link {
     transition: transform 0.3s ease-in-out;
@@ -35,4 +34,12 @@ ul {
 
 .heading3 {
     color: #ffffff;
+}
+
+@media (max-width:555px) {
+    .main-container {
+        width: 95%;
+        padding: .5rem;
+        margin: 1rem auto;
+    }
 }

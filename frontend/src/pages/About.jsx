@@ -35,7 +35,7 @@ export const About = () => {
       </section>
 
       <section className={styles['main-section']}>
-        <h2>Tech Stack & Tools</h2>
+        <h2>Tech & Tools Used</h2>
 
         <article>
           <h3 className={styles['heading3']}>Design & UI/UX</h3>
