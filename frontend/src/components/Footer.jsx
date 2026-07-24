@@ -18,18 +18,18 @@ export const Footer = () => {
                             <Link to="/home">Home</Link>
                         </li>
                         <li className={styles['list']}>
-                            <a
-                                href='/about'
+                            <Link 
+                            to='/about'
                                 target='_blank'
                                 rel='noopener noreferrer'
-                            >About</a>
+                            >About</Link>
                         </li>
                         <li className={styles['list']}>
-                            <a
-                                href='/privacy'
+                            <Link 
+                            to='/privacy'
                                 target='_blank'
                                 rel='noopener noreferrer'
-                            >Privacy-Policy</a>
+                            >Privacy-Policy</Link>
                         </li>
                         <li className={styles['list']}>
                             <Link to="/games">Games</Link>
