@@ -10,11 +10,9 @@ import { TechStack } from "../components/TechStack";
 
 import firstPorject from '../assets/projectImgs/firstPorject.png';
 
-import './Home.module.css';
-
 export const Home = () => {
     return (
-        <main>
+        <main className={styles['main-container']}>
             <Hero />
             <TechStack />
             <section className={styles['project-item-section']}>
@@ -56,6 +54,7 @@ export const Home = () => {
                     />
                 </article>
             </section>
+
         </main>
     )
 };

@@ -16,11 +16,11 @@ import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <div className='app-container'>
+    <div className={styles['app-container']}>
       <Navbar />
       {/* placed here so that it can be renderd on all pages. */}
 
-      <main className='main-container'>
+      <main className={styles['main-container']}>
         <Routes>
           {/* Routes : thsi will be holding all of our route */}
 
@@ -36,7 +36,7 @@ function App() {
           {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
         </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
