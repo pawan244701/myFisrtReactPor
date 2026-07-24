@@ -1,6 +1,6 @@
 .main-sectoin {
-    width: 90%;
-    max-width: 600px;
+    width: 80%;
+    /* max-width: 600px; */
     margin: 2rem;
     padding: 2rem;
     border: 2px solid #115e59;
@@ -12,21 +12,27 @@
 }
 
 .main-header {
+    width: 80%;
     background-color: #0d9488;
     border: 2px solid #115e59;
-    border-radius: 0rem 2rem 0rem 2rem;
+    border-radius: 0rem 2rem;
     padding: 1rem;
     color: #f4f7f6;
 }
 
 .nav-links {
-    width: 80%;
+    width: 100%;
     max-width: 255px;
     text-align: center;
     padding: 1rem;
     margin-top: 1.5rem;
     border-radius: 0rem 1rem;
     border: 2px solid #115e59;
+    transition: transform 0.4s ease-in-out;
+    background-color: #ffffff;
+}
+.nav-links:hover {
+    transform: scale(1.1);
 }
 .linkedin:hover {
     color: #0000ff;
@@ -37,11 +43,11 @@ p {
 }
 @media (max-width:555px) {
     .main-sectoin {
-        margin: .5rem;
         padding: 1rem;
+        width: 90%;
     }
 
     .main-header {
-        border-radius: 0rem 2rem;
+        width: 100%;
     }
 }
