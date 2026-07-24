@@ -1,0 +1,33 @@
+.main-container {
+    width: 90%;
+    padding: 2rem;
+    margin: 2rem auto;
+    border: 2px solid #115e59;
+    border-radius: 0rem 2rem;
+    box-sizing: border-box;
+}
+
+.main-container h1, .main-container p {
+    padding: 1rem 0rem;
+}
+
+.info-cards {
+    background-color: #0d9488;
+    padding: 1rem;
+    margin: .5rem;
+    border: 2px solid #115e59;
+    border-radius: 0rem 2rem;
+    color: #f4f7f6;
+}
+
+.link-cls:hover {
+    color: #0000ff;
+}
+
+@media (max-width:555px) {
+    .main-container {
+        width: 95%;
+        padding: .5rem;
+        margin: 1rem auto;
+    }
+}
