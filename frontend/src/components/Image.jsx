@@ -1,6 +1,5 @@
 import styles from './Image.module.css';
 export const Image = ({ image }) => {
-       console.log("jhbh", image);
     return (
             <marquee className={styles['marquee-container']}>
                 {

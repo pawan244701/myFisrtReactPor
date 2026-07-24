@@ -14,10 +14,12 @@ import styles from './App.module.css';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
+import logoImg from "./assets/logoImg/kali.png";
+
 function App() {
   return (
     <div className={styles['app-container']}>
-      <Navbar />
+      <Navbar logoSrc={logoImg} />
       {/* placed here so that it can be renderd on all pages. */}
 
       <main className={styles['main-container']}>

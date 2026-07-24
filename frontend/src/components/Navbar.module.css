@@ -25,10 +25,17 @@
 }
 
 .logo-container {
-    border-radius: 1rem;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
 }
-
+.actual-logo {
+    max-height: 100%;
+    width: auto;
+    border-radius: 0% 50%;
+}
 .toggle-container {
     display: flex;
     align-items: center;
