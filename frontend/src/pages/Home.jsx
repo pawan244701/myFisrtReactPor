@@ -7,6 +7,8 @@ import { Signup } from './Signup';
 import { Hero } from "../components/Hero";
 import { Projects } from "../components/Projects";
 import { TechStack } from "../components/TechStack";
+import { Image } from "../components/Image";
+import { galleryImgs } from "../data/imageData";
 
 import firstPorject from '../assets/projectImgs/firstPorject.png';
 
@@ -54,7 +56,8 @@ export const Home = () => {
                     />
                 </article>
             </section>
-
+            <Image 
+            image={galleryImgs}/>
         </main>
     )
 };

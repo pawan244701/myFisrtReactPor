@@ -1,0 +1,14 @@
+.marquee-container {
+    border: 2px solid #115e59;
+    border-radius: 0rem 2rem;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+}
+.actual-image {
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #115e59;
+    border-radius: 0rem 2rem;
+    margin: 0rem 1rem;
+}

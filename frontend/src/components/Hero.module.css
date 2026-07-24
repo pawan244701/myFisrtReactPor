@@ -20,6 +20,20 @@
     color: #f4f7f6;
 }
 
+.main-header hr {
+    margin-bottom: 1rem;
+}
+
+.main-header h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: Italic;
+}
+
+.main-header p strong {
+    text-decoration: underline;
+}
+
 .nav-links {
     width: 100%;
     max-width: 255px;
@@ -31,9 +45,11 @@
     transition: transform 0.4s ease-in-out;
     background-color: #ffffff;
 }
+
 .nav-links:hover {
     transform: scale(1.1);
 }
+
 .linkedin:hover {
     color: #0000ff;
 }
@@ -41,6 +57,7 @@
 p {
     padding: 0.2rem;
 }
+
 @media (max-width:555px) {
     .main-sectoin {
         padding: 1rem;
