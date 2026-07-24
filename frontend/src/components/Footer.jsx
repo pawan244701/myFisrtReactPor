@@ -19,17 +19,10 @@ export const Footer = () => {
                         </li>
                         <li className={styles['list']}>
                             <Link 
-                            to='/about'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >About</Link>
+                            to='/about'>About</Link>
                         </li>
                         <li className={styles['list']}>
-                            <Link 
-                            to='/privacy'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >Privacy-Policy</Link>
+                            <Link to='/privacy'>Privacy-Policy</Link>
                         </li>
                         <li className={styles['list']}>
                             <Link to="/games">Games</Link>
