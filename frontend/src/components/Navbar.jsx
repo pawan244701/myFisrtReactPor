@@ -21,12 +21,16 @@ export const Navbar = ({ logoSrc }) => {
 
             <div className={`${styles['toggle-container']} ${isOpen ? styles.open : ''}`}>
                 <Link to='/home' className={styles['nav-links']}>Home</Link>
-                <Link to='/games' className={styles['nav-links']}>Games</Link>
-                <Link to='' className={styles['nav-links']}>Anime</Link>
+                <Link to='/Contact' className={styles['nav-links']}>Contact</Link>
+                {/* <Link to='' className={styles['nav-links']}>Anime</Link> */}
                 <Link to='/login' className={styles['nav-links']}>Login</Link>
                 <Link to='/signup' className={styles['nav-links']}>Signup</Link>
             </div>
-            <button className={styles['hamburger-menu']} onClick={toggleMenu} >&#9776;</button>
+            <button
+                className={styles['hamburger-menu']}
+                onClick={toggleMenu}
+            >&#9776;
+            </button>
         </div>
     );
 };

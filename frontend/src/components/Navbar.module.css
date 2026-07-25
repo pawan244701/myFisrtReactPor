@@ -31,11 +31,13 @@
     height: 50px;
     overflow: hidden;
 }
+
 .actual-logo {
     max-height: 100%;
     width: auto;
     border-radius: 0% 50%;
 }
+
 .toggle-container {
     display: flex;
     align-items: center;
@@ -48,8 +50,9 @@
 
 @media (max-width:555px) {
     .main-container {
+        position: relative;
         background-color: #0d9488;
-        margin: 1.5rem .5rem;
+        margin: 1.5rem 0.5rem;
     }
 
     .hamburger-menu {
@@ -66,16 +69,18 @@
         flex-direction: column;
         position: absolute;
         right: 0rem;
-        top: 4.7rem;
+        top: 100%;
         width: 45%;
-        height: 55%;
+        min-height: 100%;
         background-color: #115e59;
         padding: 1rem;
         border-radius: 0rem 2rem;
         z-index: 10;
+        box-sizing: border-box;
     }
+
     .toggle-container.open,
     .toggle-container.open {
         flex-direction: column;
     }
-} 
+}
