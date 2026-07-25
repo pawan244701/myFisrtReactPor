@@ -48,6 +48,7 @@ export const Login = () => {
         } catch (error) {
             // console.error('loging error :', error);
             sessionStorage.setItem('authUser', username);
+            navigate(`/`);
             // alert('because NO Server is backing it for now. it is pure frontend');
         }
     };
