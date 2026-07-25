@@ -30,7 +30,7 @@
 .signup-input,
 .signup-button {
     background-color: #0d9488;
-    color: black;
+    color: rgb(255, 255, 255);
     padding: .4rem;
     border: 2px solid #115e59;
     border-radius: 0rem 1rem;

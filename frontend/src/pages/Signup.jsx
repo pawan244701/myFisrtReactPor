@@ -1,27 +1,161 @@
+import { useState } from 'react';
 import styles from './Signup.module.css';
+import { useNavigate } from 'react-router-dom';
+
 export const Signup = () => {
+
+    // creating state obj so that we won't need to create four saperate states for all inputs
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        email: '',
+        confirmPassword: ''
+    });
+    const navigate = useNavigate();
+
+    // 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((previousData) => ({
+            ...previousData,
+            [name]: value
+        }))
+    }
+
+    const validateForm = () => {
+        const isPasswordLenghtOk = formData.password.length >= 8;
+        const isPasswordMatching = formData.password === formData.confirmPassword;
+        // console.log(`lenght: ${isPasswordLenghtOk} | pass matchign : ${isPasswordMatching}`)
+        return isPasswordLenghtOk && isPasswordMatching;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const isValid = validateForm();
+        if (!isValid) {
+            alert('Password must be at least 8 char long and both shoud match.');
+            return;
+        }
+
+        try {
+            const response = await fetch('endPoint/url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                sessionStorage.setItem('authUser', formData.username);
+                navigate(`/`);
+            }
+            // else {
+            //     alert('signup failed! please tryagain.');
+            // }
+        } catch (error) {
+            // console.error('loging error :', error);
+            sessionStorage.setItem('authUser', formData.username);
+            navigate(`/`);
+            // alert('This service is availble, because NO Server is backing it for now.');
+        }
+    };
+
     return (
         <main className={styles['signup-container']}>
-            <form className={styles['signup-form']}>
+            <form
+                onSubmit={handleSubmit}
+                className={styles['signup-form']}
+            >
                 <h1 className={styles['signup-h1']}>Signup</h1>
 
                 <div className={styles['input-group']}>
-                    <label className={styles['signup-label']} htmlFor="username">Enter Username</label>
-                    <input className={styles['signup-input']} type="text" id="username" placeholder="Username" autoComplete="username" required />
+                    <label
+                        className={styles['signup-label']}
+                        htmlFor="username"
+                    >Enter Username
+                    </label>
+
+                    <input
+                        className={styles['signup-input']}
+                        type="text"
+                        id="username"
+                        name='username'
+                        placeholder="Username"
+                        autoComplete="username"
+                        required
+                        value={formData.username}
+                        onChange={handleChange}
+                    />
                 </div>
+
                 <div className={styles['input-group']}>
-                    <label className={styles['signup-label']} htmlFor="email">Enter Email</label>
-                    <input className={styles['signup-input']} type="email" id="email" placeholder="example@email.com" autoComplete="email" required />
+                    <label
+                        className={styles['signup-label']}
+                        htmlFor="email"
+                    >Enter Email
+                    </label>
+                    <input
+                        className={styles['signup-input']}
+                        type="email"
+                        id="email"
+                        name='email'
+                        placeholder="example@email.com"
+                        autoComplete="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
                 </div>
+
                 <div className={styles['input-group']}>
-                    <label className={styles['signup-label']} htmlFor="password">Enter Password</label>
-                    <input className={styles['signup-input']} type="password" id="password" placeholder="my$#%46pdhF76" autoComplete="new-password" required />
+                    <label
+                        className={styles['signup-label']}
+                        htmlFor="password"
+                    >Enter Password
+                    </label>
+                    <input
+                        className={styles['signup-input']}
+                        type="password"
+                        id="password"
+                        name='password'
+                        placeholder="my$#%46pdhF76"
+                        autoComplete="new-password"
+                        required
+                        value={formData.password}
+                        onChange={handleChange}
+                    />
                 </div>
+
                 <div className={styles['input-group']}>
-                    <label className={styles['signup-label']} htmlFor="confirmPassword">Re-enter Password</label>
-                    <input className={styles['signup-input']} type="password" id="confirmPassword" placeholder="my$#%46pdhF76" autoComplete="current-password" required />
+                    <label
+                        className={styles['signup-label']}
+                        htmlFor="confirmPassword"
+                    >Re-enter Password
+                    </label>
+                    <input
+                        className={styles['signup-input']}
+                        type="password"
+                        id="confirmPassword"
+                        name='confirmPassword'
+                        placeholder="my$#%46pdhF76"
+                        autoComplete="current-password"
+                        required
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                    />
                 </div>
-                <button className={styles['signup-button']} type="submit">Signup</button>
+                <button
+                    className={styles['signup-button']}
+                    type="submit"
+                >Signup
+                </button>
             </form>
         </main>
     )
