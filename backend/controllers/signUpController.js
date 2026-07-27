@@ -34,7 +34,7 @@ export const userSignup = async (req, res) => {
             "INSERT INTO users (username, email, password) VALUES (?,?,?)",
             [username, email, hashedPassword]
         );
-        return res.status(200).json({
+        return res.status(201).json({
             message: 'SignUp successfull!'
         });
     } catch (err) {

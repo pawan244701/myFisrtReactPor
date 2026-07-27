@@ -1,13 +1,14 @@
 import 'dotenv/config';
 import express from 'express';
 import { json } from 'express';
+import cors from 'cors';
 
 import { pool } from './config/database.js';
-import { router } from './routes/signUpRoute.js';
+import { router } from './routes/allRoute.js';
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 app.use('/', router);
 
 
