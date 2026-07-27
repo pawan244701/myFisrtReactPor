@@ -52,17 +52,19 @@ export const Signup = () => {
                 }),
             });
 
+            const textData = await response.text();
+            const data = textData ? JSON.parse(textData) : {};
+
             if (response.ok) {
-                const data = await response.json();
                 authUserFunc(formData.username);
                 navigate(`/`);
             }
             else {
-                alert('signup failed! please try again.');
+                alert(data.message || 'Signup failed! Please try again.');
             }
         } catch (error) {
-            // console.error('signup catch error :', error);
-            alert('Server error!');
+            console.error('signup error :', error);
+            alert('Server error or service warming up. Please try again in a few seconds!');
         }
     };
 
@@ -144,7 +146,7 @@ export const Signup = () => {
                         id="confirmPassword"
                         name='confirmPassword'
                         placeholder="my$#%46pdhF76"
-                        autoComplete="current-password"
+                        autoComplete="new-password"
                         required
                         value={formData.confirmPassword}
                         onChange={handleChange}

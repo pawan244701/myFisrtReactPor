@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import { pool } from '../config/database.js';
 import bcrypt from 'bcrypt';
-import { json } from 'express';
 
 export const userSignup = async (req, res) => {
     const { username, email, password } = req.body; // obj destructuring, keys should match with data coming from browser
@@ -14,7 +13,7 @@ export const userSignup = async (req, res) => {
     try {
         const [rows] = await pool.query(
             "SELECT * FROM users WHERE username = ? OR email = ? LIMIT 1",
-            [username, email] // don't forget to add both username and password otherwise you'll get: syntex err
+            [username, email] // don't forget to add both username and email otherwise you'll get: syntex err
             // LIMIT 1 : tells mysql to stop after getting first match
             // ? (parameterized query): prevents sql njection
             // [username] : must match obj
@@ -45,7 +44,7 @@ export const userSignup = async (req, res) => {
                 message: 'Username or Email already taken! try diffrent one!'
             });
         }
-        console.log("error", err)
+        console.error("Signup error details:", err);
         return res.status(500).json({
             message: 'Signup failed! Server error!'
         });

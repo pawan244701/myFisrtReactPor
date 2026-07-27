@@ -43,63 +43,64 @@ export const Login = () => {
                 navigate(`/`);
             }
             else {
-                alert('Login failed due to Invalid details!');
+                alert(data.message || 'Login failed due to Invalid details!');
             }
         } catch (error) {
-            console.error('loging error :', error);
-            alert('Server error!');
+            console.error('logging error :', error);
+            alert('Server error or service warming up. Please try again in a few seconds!');
         }
-    };
+    }
+};
 
-    return (
-        <main className={styles['login-container']}>
-            <form
-                onSubmit={handleSubmit}
-                className={styles['login-form']}>
-                <h1 className={styles['login-h1']}>Login</h1>
+return (
+    <main className={styles['login-container']}>
+        <form
+            onSubmit={handleSubmit}
+            className={styles['login-form']}>
+            <h1 className={styles['login-h1']}>Login</h1>
 
-                <div className={styles['input-group']}>
-                    <label
-                        className={styles['login-label']}
-                        htmlFor="username"
-                    >Username
-                    </label>
-                    <input
-                        className={styles['login-input']}
-                        type="text"
-                        id="username"
-                        name='username'
-                        placeholder="username"
-                        autoComplete="username"
-                        required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div className={styles['input-group']}>
-                    <label
-                        className={styles['login-label']}
-                        htmlFor="password"
-                    >Password
-                    </label>
-                    <input
-                        className={styles['login-input']}
-                        type="password"
-                        id="password"
-                        name='password'
-                        placeholder="my$#%46pdhF76"
-                        autoComplete="current-password"
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button
-                    className={styles['login-button']}
-                    type="submit"
-                >Login
-                </button>
-            </form>
-        </main>
-    )
+            <div className={styles['input-group']}>
+                <label
+                    className={styles['login-label']}
+                    htmlFor="username"
+                >Username
+                </label>
+                <input
+                    className={styles['login-input']}
+                    type="text"
+                    id="username"
+                    name='username'
+                    placeholder="username"
+                    autoComplete="username"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+            </div>
+            <div className={styles['input-group']}>
+                <label
+                    className={styles['login-label']}
+                    htmlFor="password"
+                >Password
+                </label>
+                <input
+                    className={styles['login-input']}
+                    type="password"
+                    id="password"
+                    name='password'
+                    placeholder="my$#%46pdhF76"
+                    autoComplete="current-password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <button
+                className={styles['login-button']}
+                type="submit"
+            >Login
+            </button>
+        </form>
+    </main>
+)
 };
