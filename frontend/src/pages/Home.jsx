@@ -39,20 +39,6 @@ export const Home = () => {
                         imgSrc={firstPorject}
                         description='This was my project (full user auth and verification)'
                         projectLink='https://pawan244701.onrender.com'
-                    /><Projects
-                        imgSrc={firstPorject}
-                        description='This was my project (full user auth and verification)'
-                        projectLink='https://pawan244701.onrender.com'
-                    />
-                    <Projects
-                        imgSrc={firstPorject}
-                        description='This was my project (full user auth and verification)'
-                        projectLink='https://pawan244701.onrender.com'
-                    />
-                    <Projects
-                        imgSrc={firstPorject}
-                        description='This was my project (full user auth and verification)'
-                        projectLink='https://pawan244701.onrender.com'
                     />
                 </article>
             </section>
