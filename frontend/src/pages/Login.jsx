@@ -18,7 +18,7 @@ export const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    }
+    
 
     const isValid = validateForm();
     if (!isValid) {
@@ -44,14 +44,13 @@ export const Login = () => {
             navigate(`/`);
         }
         else {
-            alert(data.message || 'Login failed due to Invalid details!');
+            alert('Login failed due to Invalid details!');
         }
     } catch (error) {
         console.error('logging error :', error);
         alert('Server error or service warming up. Please try again in a few seconds!');
     }
 }
-};
 
 return (
     <main className={styles['login-container']}>
