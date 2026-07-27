@@ -18,38 +18,39 @@ export const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const isValid = validateForm();
-        if (!isValid) {
-            alert('Password must be at least 8 characters long.');
-            return;
-        }
-
-        try {
-            const response = await fetch(import.meta.env.VITE_LOGIN_API, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                authUserFunc(username);
-                navigate(`/`);
-            }
-            else {
-                alert(data.message || 'Login failed due to Invalid details!');
-            }
-        } catch (error) {
-            console.error('logging error :', error);
-            alert('Server error or service warming up. Please try again in a few seconds!');
-        }
     }
+
+    const isValid = validateForm();
+    if (!isValid) {
+        alert('Password must be at least 8 characters long.');
+        return;
+    }
+
+    try {
+        const response = await fetch(import.meta.env.VITE_LOGIN_API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            authUserFunc(username);
+            navigate(`/`);
+        }
+        else {
+            alert(data.message || 'Login failed due to Invalid details!');
+        }
+    } catch (error) {
+        console.error('logging error :', error);
+        alert('Server error or service warming up. Please try again in a few seconds!');
+    }
+}
 };
 
 return (
