@@ -13,7 +13,7 @@ app.use('/', router);
 
 
 
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.PORT || process.env.SERVER_PORT;
 app.listen(PORT, () => {
     console.log(`server is running on port: ${PORT}!!!`)
 });
