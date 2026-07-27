@@ -2,18 +2,19 @@ import { useState } from 'react';
 import styles from './Signup.module.css';
 import { useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../contexts/AuthContext';
 export const Signup = () => {
+    const { authUserFunc } = useAuth();
+    const navigate = useNavigate();
 
     // creating state obj so that we won't need to create four saperate states for all inputs
     const [formData, setFormData] = useState({
         username: '',
-        password: '',
         email: '',
+        password: '',
         confirmPassword: ''
     });
-    const navigate = useNavigate();
 
-    // 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((previousData) => ({
@@ -39,31 +40,29 @@ export const Signup = () => {
         }
 
         try {
-            const response = await fetch('endPoint/url', {
+            const response = await fetch('http://localhost:9999/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username,
-                    email,
-                    password
+                    username: formData.username,
+                    email: formData.email,
+                    password: formData.password
                 }),
             });
 
             if (response.ok) {
                 const data = await response.json();
-                sessionStorage.setItem('authUser', formData.username);
+                authUserFunc(formData.username);
                 navigate(`/`);
             }
-            // else {
-            //     alert('signup failed! please tryagain.');
-            // }
+            else {
+                alert('signup failed! please try again.');
+            }
         } catch (error) {
-            // console.error('loging error :', error);
-            sessionStorage.setItem('authUser', formData.username);
-            navigate(`/`);
-            // alert('This service is availble, because NO Server is backing it for now.');
+            // console.error('signup catch error :', error);
+            alert('Server error!');
         }
     };
 

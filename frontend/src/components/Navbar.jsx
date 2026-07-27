@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../contexts/AuthContext';
 import styles from './Navbar.module.css';
 
 export const Navbar = ({ logoSrc }) => {
+
+    const { isAuthorized, logout } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
     return (
         <div className={styles["main-container"]}>
             <div className={styles["logo-container"]}>
@@ -22,9 +26,14 @@ export const Navbar = ({ logoSrc }) => {
             <div className={`${styles['toggle-container']} ${isOpen ? styles.open : ''}`}>
                 <Link to='/home' className={styles['nav-links']}>Home</Link>
                 <Link to='/Contact' className={styles['nav-links']}>Contact</Link>
-                {/* <Link to='' className={styles['nav-links']}>Anime</Link> */}
-                <Link to='/login' className={styles['nav-links']}>Login</Link>
-                <Link to='/signup' className={styles['nav-links']}>Signup</Link>
+                <Link
+                    to='/login'
+                    className={styles['nav-links']}
+                    onClick={ isAuthorized ? logout : undefined }
+                >{isAuthorized ? 'Logout' : 'Login'}
+                </Link>
+
+                {!isAuthorized && (<Link to='/signup' className={styles['nav-links']}>Signup</Link>)}
             </div>
             <button
                 className={styles['hamburger-menu']}

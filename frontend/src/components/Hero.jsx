@@ -1,21 +1,16 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import styles from './Hero.module.css';
+
+import { useAuth } from '../contexts/AuthContext';
+
 export const Hero = () => {
 
-    const [userName, setUserName] = useState('');
-
-    useEffect(() => {
-        const storedUser =
-            sessionStorage.getItem('authUser');
-
-        setUserName(storedUser);
-    }, []);
+    const { isAuthorized } = useAuth();
 
     return (
         <section className={styles['main-sectoin']}>
             <header className={styles['main-header']}>
-                <h1>Hi {userName}, I'm Pawan Yadav</h1>
+                <h1>Hi {isAuthorized || 'Dear'}, I'm Pawan Yadav</h1>
                 <hr />
                 <h2>Welcome to the project</h2>
 

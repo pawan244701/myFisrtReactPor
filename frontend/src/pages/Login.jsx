@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // i imported it like: import { Navigate } from 'react-router-dom'; adn fucked my mind ~ for 1/2 hour
 import styles from './Login.module.css'
 
+import { useAuth } from "../contexts/AuthContext";
+
 export const Login = () => {
+    const { authUserFunc, logout } = useAuth();
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     const validateForm = () => {
         const isPasswordLenghtOk = password.length >= 8;
@@ -23,33 +26,28 @@ export const Login = () => {
         }
 
         try {
-            const response = await fetch('endPoint/url', {
+            const response = await fetch('http://localhost:9999/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username,
-                    password
+                    username: username,
+                    password: password
                 }),
             });
 
             if (response.ok) {
                 const data = await response.json();
-                sessionStorage.setItem('authUser', username);
+                authUserFunc(username);
                 navigate(`/`);
             }
             else {
-                // alert('login failed. because NO DB and server is backing it.');
-                sessionStorage.setItem('authUser', username);
-                navigate(`/`);
-
+                alert('Login failed due to Invalid details!');
             }
         } catch (error) {
-            // console.error('loging error :', error);
-            sessionStorage.setItem('authUser', username);
-            navigate(`/`);
-            // alert('because NO Server is backing it for now. it is pure frontend');
+            console.error('loging error :', error);
+            alert('Server error!');
         }
     };
 
