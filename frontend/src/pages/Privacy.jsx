@@ -1,6 +1,6 @@
 import styles from './Privacy.module.css'
 export const Privacy = () => {
-    return (
+    return ( 
         <main className={styles['main-container']}>
             <h1>Privacy Policy</h1>
             <hr />
