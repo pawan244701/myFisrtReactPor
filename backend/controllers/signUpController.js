@@ -44,7 +44,7 @@ export const userSignup = async (req, res) => {
                 message: 'Username or Email already taken! try diffrent one!'
             });
         }
-        console.error("Signup error details:", err);
+        //console.error("Signup error details:", err);
         return res.status(500).json({
             message: 'Signup failed! Server error!'
         });
