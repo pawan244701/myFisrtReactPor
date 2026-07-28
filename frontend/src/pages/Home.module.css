@@ -32,4 +32,10 @@
         display: flex;
         flex-direction: column;
     }
+
+    .project-item-section {
+        box-sizing: border-box;
+        padding: .5rem;
+        width: calc(100% - 1rem);
+    }
 }

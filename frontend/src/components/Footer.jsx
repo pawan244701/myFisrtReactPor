@@ -18,15 +18,15 @@ export const Footer = () => {
                             <Link to="/home">Home</Link>
                         </li>
                         <li className={styles['list']}>
-                            <Link 
-                            to='/about'
+                            <Link
+                                to='/about'
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >About</Link>
                         </li>
                         <li className={styles['list']}>
-                            <Link 
-                            to='/privacy'
+                            <Link
+                                to='/privacy'
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >Privacy-Policy</Link>
@@ -64,7 +64,11 @@ export const Footer = () => {
                 </nav>
             </section>
 
-            <small>&copy; {new Date().getFullYear()} pawan244701. <strong>Open-Source Project.</strong></small>
+            <p className={styles['copy-right']}>
+                <small>
+                    &copy; {new Date().getFullYear()} pawan244701. <strong>Open-Source Project.</strong>
+                </small>
+            </p>
 
         </footer>
     )
