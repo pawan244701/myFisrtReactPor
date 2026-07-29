@@ -7,6 +7,7 @@ export const Signup = () => {
     const { authUserFunc } = useAuth();
     const navigate = useNavigate();
 
+    const [error, setError] = useState(null);
     // creating state obj so that we won't need to create four saperate states for all inputs
     const [formData, setFormData] = useState({
         username: '',
@@ -32,6 +33,7 @@ export const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
 
         const isValid = validateForm();
         if (!isValid) {
@@ -39,6 +41,7 @@ export const Signup = () => {
             return;
         }
 
+        // import.meta.env.VITE_SIGNUP_API
         try {
             const response = await fetch(import.meta.env.VITE_SIGNUP_API, {
                 method: 'POST',
@@ -60,11 +63,15 @@ export const Signup = () => {
                 navigate(`/`);
             }
             else {
-                alert(data.message || 'Signup failed! Please try again.');
+                setError(data.message || 'Signup failed! Please try again.');
             }
         } catch (error) {
-            console.error('signup error :', error);
-            alert('Server error or service warming up. Please try again in a few seconds!');
+            // console.log('Full Error: ', error);
+            if (error.message === "Failed to fetch") {
+                setError('Unable to reach Server. Please try again in a few seconds!');
+            } else {
+                setError('An unexpected error occured. Please try again!');
+            }
         }
     };
 
@@ -76,6 +83,14 @@ export const Signup = () => {
             >
                 <h1 className={styles['signup-h1']}>Signup</h1>
 
+                {error && (
+                    <div className={styles['input-group-error']}
+                        role='alert'>
+                        <label className={styles['login-error']}>
+                            {error}
+                        </label>
+                    </div>
+                )}
                 <div className={styles['input-group']}>
                     <label
                         className={styles['signup-label']}

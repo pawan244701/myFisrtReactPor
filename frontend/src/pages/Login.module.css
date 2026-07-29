@@ -50,6 +50,22 @@
     background-color: #115e59;
 }
 
+.input-group-error {
+    width: 100%;
+    padding: 0rem 1rem .5rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.login-error {
+    background-color: rgb(255, 255, 255);
+    font-size: large;
+    color: rgb(255, 0, 0);
+    padding: .4rem 2rem;
+    border: 2px solid #ff0000;
+    border-radius: 1rem 1rem;
+}
+
 .login-h1 {
     align-self: center;
     padding: 1rem;
