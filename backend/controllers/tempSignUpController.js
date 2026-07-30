@@ -39,7 +39,7 @@ export const tempUserSignup = async (req, res) => {
 
         // otp gen
         const genOtp = Math.floor(1000000 + Math.random() * 9000000).toString();
-        const expireAt = new Date(Date.now() + 5 * 60 * 1000);
+        const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
         // password incryption
         const saltRound = 8;
@@ -50,11 +50,11 @@ export const tempUserSignup = async (req, res) => {
             `INSERT INTO pendingVerificationUsers (username, email, password, otpCode, expiresAt)
                  VALUES (?, ?, ?, ?, ?)
                  ON DUPLICATE KEY UPDATE 
-                    username = VALUE(username),
-                    password = VALUE(password),
-                    otpCode = VALUE(otpCode),
-                    expiresAt = VALUE(expiresAt)`,
-            [username, email, hashedPassword, genOtp, expiresAt]
+                    username = VALUES(username),
+                    password = VALUES(password),
+                    otpCode = VALUES(otpCode),
+                    expiresAt = VALUES(expiresAt)`,
+            [username, email, hashedPassword, genOtp, expiresAt] // this is expiresAt is not defined
         );
 
         // send otp email 
