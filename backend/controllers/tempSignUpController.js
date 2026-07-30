@@ -71,14 +71,14 @@ export const tempUserSignup = async (req, res) => {
         });
 
     } catch (err) {
-        // console.error('erro === : ', err);
+        console.error('erro === : ', err);
         if (err.code === 'ER_DUP_ENTRY' || err.errno === 1062) {
             return res.status(400).json({
                 success: false,
                 message: 'Email already Exists! try diffrent one or login with current one.'
             });
         }
-        //console.error("Signup error details:", err);
+        console.error("Signup error details:", err);
         return res.status(500).json({
             message: 'Signup failed! Server error!'
         });

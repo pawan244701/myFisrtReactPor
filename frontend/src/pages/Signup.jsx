@@ -71,7 +71,7 @@ export const Signup = () => {
                 setError(data.message || 'Signup failed! Please try again.');
             }
         } catch (error) {
-            // console.log('Full Error: ', error);
+            console.log('Full Error: ', error);
             if (error.message === "Failed to fetch") {
                 setError('Unable to reach Server. Please try again in a few seconds!');
             } else {
