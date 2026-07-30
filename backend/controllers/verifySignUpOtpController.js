@@ -29,7 +29,7 @@ export const verifySignUpOtp = async (req, res) => {
 
         await pool.query(
             "INSERT INTO users (username, email, password) VALUES (?,?,?)",
-            [pendingUser.username, pendingUser.email, pendingUser, password]
+            [pendingUser.username, pendingUser.email, pendingUser.password]
         );
         await pool.query(
             "DELETE FROM pendingVerificationUsers WHERE email = ?",
