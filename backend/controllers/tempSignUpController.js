@@ -11,7 +11,7 @@ export const tempUserSignup = async (req, res) => {
             message: "Please provide all details"
         });
     }
-    const otpclient = new brevo.BrevoClient({
+    const otpclient = new BrevoClient({
         apiKey: process.env.BREVO_API_KEY
     });
     try {
