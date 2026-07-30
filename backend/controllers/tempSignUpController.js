@@ -71,6 +71,7 @@ export const tempUserSignup = async (req, res) => {
         });
 
     } catch (err) {
+        // console.error('erro === : ', err);
         if (err.code === 'ER_DUP_ENTRY' || err.errno === 1062) {
             return res.status(400).json({
                 success: false,

@@ -47,7 +47,7 @@ export const Signup = () => {
 
         // import.meta.env.VITE_SIGNUP_API
         try {
-            const response = await fetch('import.meta.env.VITE_SIGNUP_API', {
+            const response = await fetch(import.meta.env.VITE_SIGNUP_API, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export const Signup = () => {
 
         try {
             // import.meta.env.VITE_VERIFY_OTP_API
-            const response = await fetch('import.meta.env.VITE_VERIFY_OTP_API', {
+            const response = await fetch(import.meta.env.VITE_VERIFY_OTP_API, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
