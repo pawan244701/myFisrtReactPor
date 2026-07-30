@@ -8,13 +8,14 @@ export const Login = () => {
     const { authUserFunc, logout } = useAuth();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
     const validateForm = () => {
         const isPasswordLenghtOk = password.length >= 8;
-        return isPasswordLenghtOk;
+        const isEmailCurrect = email.includes('@') && email.includes('.');
+        return isPasswordLenghtOk && isEmailCurrect;
     };
 
     const handleSubmit = async (e) => {
@@ -34,7 +35,7 @@ export const Login = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username: username,
+                    email: email,
                     password: password
                 }),
             });
@@ -42,7 +43,7 @@ export const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                authUserFunc(username);
+                authUserFunc(data.username);
                 navigate(`/`);
             }
             else {
@@ -76,19 +77,19 @@ export const Login = () => {
                 <div className={styles['input-group']}>
                     <label
                         className={styles['login-label']}
-                        htmlFor="username"
-                    >Username
+                        htmlFor="email"
+                    >Email
                     </label>
                     <input
                         className={styles['login-input']}
-                        type="text"
-                        id="username"
-                        name='username'
-                        placeholder="username"
-                        autoComplete="username"
+                        type="email"
+                        id="email"
+                        name='email'
+                        placeholder="myEmail@email.com"
+                        autoComplete="email"
                         required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div className={styles['input-group']}>
