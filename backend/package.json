@@ -20,6 +20,7 @@
     "express-rate-limit": "^8.6.1",
     "helmet": "^8.3.0",
     "mysql2": "^3.23.1",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "zod": "^4.4.3"
   }
 }

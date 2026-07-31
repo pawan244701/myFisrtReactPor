@@ -6,11 +6,6 @@ import { BrevoClient } from '@getbrevo/brevo';
 export const tempUserSignup = async (req, res) => {
     const { username, email, password } = req.body;
 
-    if (!username || !email || !password) {
-        return res.status(400).json({
-            message: "Please provide all details"
-        });
-    }
     const otpclient = new BrevoClient({
         apiKey: process.env.BREVO_API_KEY
     });

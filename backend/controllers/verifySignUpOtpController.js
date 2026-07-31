@@ -4,12 +4,6 @@ import { pool } from '../config/database.js';
 export const verifySignUpOtp = async (req, res) => {
     const { email, otpCode } = req.body;
 
-    if (!email || !otpCode) {
-        return res.status(400).json({
-            message: "Email and Otp code is Required."
-        });
-    }
-
     try {
         const [rows] = await pool.query(
             "SELECT * FROM pendingVerificationUsers WHERE email = ? AND otpCode = ?",
