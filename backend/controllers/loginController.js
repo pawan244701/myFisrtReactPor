@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { pool } from '../config/database.js'; // don't forget to add extension: .js o/w you'll get: [Error [ERR_MODULE_NOT_FOUND]: Cannot find module]
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 //don't forget async here o/w you'll get error: [SyntaxError: Unexpected reserved word]
 export const userLogin = async (req, res) => {
@@ -17,13 +18,24 @@ export const userLogin = async (req, res) => {
         }
         const userExists = rows[0];
         const isPasswordMatching = await bcrypt.compare(password, userExists.password);
+
         if (!isPasswordMatching) {
             return res.status(401).json({
                 message: "Invalid Email or Password"
             });
         }
+
+        // creatinf jwt payload
+        const payload = {
+            userId: userExists.id,
+            email: userExists.email,
+            username: userExists.username
+        };
+        const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '1d'});
+
         return res.status(200).json({
             message: "Login successful",
+            token: token,
             username: userExists.username
         });
 
