@@ -9,14 +9,18 @@ export const AuthProvider = ({ children }) => { // creating componenet
     });
 
     //login func
-    const authUserFunc = (username) => {
+    const authUserFunc = (username, token) => {
         localStorage.setItem('authUser', username);
+        if ( token ) {
+            localStorage.setItem('token', token);
+        }
         setIsAuthorized(username);
     };
 
     // logout func
     const logout = () => {
         localStorage.removeItem('authUser');
+        localStorage.removeItem('token');
         setIsAuthorized(null);
     };
 

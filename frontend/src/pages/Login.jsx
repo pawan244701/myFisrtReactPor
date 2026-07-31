@@ -43,7 +43,6 @@ export const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem('token', data.token);
                 authUserFunc(data.username, data.token);
                 navigate(`/`);
             }
