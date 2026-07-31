@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // i imported it like: import { Navigate } from 'react-router-dom'; adn fucked my mind ~ for 1/2 hour
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css'
 
 import { useAuth } from "../contexts/AuthContext";
@@ -43,7 +43,8 @@ export const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                authUserFunc(data.username);
+                localStorage.setItem('token', data.token);
+                authUserFunc(data.username, data.token);
                 navigate(`/`);
             }
             else {

@@ -3,15 +3,25 @@ import styles from './Contact.module.css';
 
 export const Contact = () => {
   const [message, setMessage] = useState('');
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
+    const token = localStorage.getItem('token');
 
+    if (!token) {
+      setError('You must be logged in to send a message. Please login first!');
+      return;
+    }
+
+    //import.meta.env.VITE_CONTACT_API
     try {
-      const response = await fetch('endPoint/url', {
+      const response = await fetch(import.meta.env.VITE_CONTACT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ message }),
       });
@@ -22,11 +32,11 @@ export const Contact = () => {
         alert('Message sent successfully!');
         setMessage(''); // clearing box
       } else {
-        // alert(data.message || 'Failed to send message.');
+        setError(data.message || 'Message could not be sent. Daily limit might be exhausted!');
       }
     } catch (error) {
-      // console.error('Error sending message:', error);
-      alert('No server please try again after a few days.');
+      setError('Unable to reach Server. Please try again in a few seconds!');
+      // alert('No server please try again after a few days.');
     }
   };
 
@@ -51,6 +61,14 @@ export const Contact = () => {
 
       <section className={styles['form-container']}>
         <form onSubmit={handleSubmit}>
+          {error && (
+            <div className={styles['input-group-error']}
+              role='alert'>
+              <label className={styles['login-error']}>
+                {error}
+              </label>
+            </div>
+          )}
           <label htmlFor="message">Enter your Message</label>
           <textarea
             id="message"
