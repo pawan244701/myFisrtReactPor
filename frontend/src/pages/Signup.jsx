@@ -28,10 +28,29 @@ export const Signup = () => {
     }
 
     const validateForm = () => {
-        const isPasswordLenghtOk = formData.password.length >= 8;
+        const isPasswordLengthOk = formData.password.length >= 8;
         const isPasswordMatching = formData.password === formData.confirmPassword;
-        // console.log(`lenght: ${isPasswordLenghtOk} | pass matchign : ${isPasswordMatching}`)
-        return isPasswordLenghtOk && isPasswordMatching;
+        const isEmailCorrect = formData.email.includes('@') && formData.email.includes('.')
+        const isUsernameOk = formData.username.trim().length >= 3;
+        // console.log(`lenght: ${isPasswordLengthOk} | pass matchign : ${isPasswordMatching}`)
+        // return isPasswordLengthOk && isPasswordMatching && isEmailCurrect && isUsername;
+
+        if (!isUsernameOk) {
+            setError('Username must be at least 3 characters long.');
+            return false;
+        }
+
+        if (!isEmailCorrect) {
+            setError('Please enter a valid email address.');
+            return false;
+        }
+
+        if (!isPasswordLengthOk || !isPasswordMatching) {
+            setError('Password must be at least 8 characters long and both must match.');
+            return false;
+        }
+
+        return true;
     };
 
     const handleSubmit = async (e) => {
@@ -39,10 +58,7 @@ export const Signup = () => {
         setError(null);
 
         const isValid = validateForm();
-        if (!isValid) {
-            setError('Password must be at least 8 char long and both shoud match.');
-            return;
-        }
+        if (!isValid) return;
         setIsLoading(true);
 
         // import.meta.env.VITE_SIGNUP_API
@@ -104,7 +120,7 @@ export const Signup = () => {
             const data = textData ? JSON.parse(textData) : {};
 
             if (response.ok) {
-                authUserFunc(formData.username);
+                authUserFunc(formData.username, data.token);
                 navigate(`/`);
             } else {
                 setError(data.message || 'Verification failed. Invalid or Expired Otp. Please signup again.');
@@ -237,11 +253,13 @@ export const Signup = () => {
                             type="text"
                             id="otpCode"
                             name="otpCode"
+                            inputMode='numeric'
+                            pattern='[0-9]*'
                             maxLength="7"
-                            placeholder="0123456"
+                            placeholder="Enter OTP"
                             required
                             value={otpCode}
-                            onChange={(e) => setOtpCode(e.target.value)}
+                            onChange={(e) => setOtpCode(e.target.value.replace(/[^0-9]/g, ''))}
                         />
                     </div>
 
