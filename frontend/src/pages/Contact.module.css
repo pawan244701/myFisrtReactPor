@@ -52,7 +52,10 @@
   background-color: #115e59;
   outline: none;
 }
-
+.form-container textarea::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
 .form-container label:hover {
   background-color: #115e59;
 }

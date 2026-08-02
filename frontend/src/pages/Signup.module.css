@@ -35,7 +35,11 @@
     border: 2px solid #115e59;
     border-radius: 0rem 1rem;
     transition: transform 0.3s ease-in-out;
+}
 
+.signup-input::placeholder {
+    color: #ffffff;
+    opacity: 1;
 }
 
 .signup-input:hover {

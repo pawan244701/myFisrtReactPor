@@ -36,6 +36,11 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.login-input::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
 .login-input:hover {
     background-color: #115e59;
     transform: translate(.5rem) scaleX(1.1);

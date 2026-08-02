@@ -71,6 +71,7 @@ export const Contact = () => {
           )}
           <label htmlFor="message">Enter your Message</label>
           <textarea
+            className={styles['textarea-cls']}
             id="message"
             name="message"
             placeholder="Enter your message..."

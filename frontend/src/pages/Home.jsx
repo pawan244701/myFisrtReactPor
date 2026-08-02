@@ -18,7 +18,7 @@ export const Home = () => {
             <Hero />
             <TechStack />
             <section className={styles['project-item-section']}>
-                <h1 className={styles['project-item-h1']}>My Projects and Exprements</h1>
+                <h1 className={styles['project-item-h1']}>My Projects and Expriments</h1>
                 <article className={styles['project-item-article']} >
                     {/* 
                 provide imgSrc      ='thumbnil of project'
