@@ -3,18 +3,18 @@ const AuthContext = createContext(); // assigning it to var it's a kind of func 
 
 export const AuthProvider = ({ children }) => { // creating componenet
 
-    // func to get username 
+    // func to get full_name
     const [ isAuthorized, setIsAuthorized ] = useState(() => {
         return localStorage.getItem('authUser') || null;
     });
 
     //login func
-    const authUserFunc = (username, token) => {
-        localStorage.setItem('authUser', username);
+    const authUserFunc = (full_name, token) => {
+        localStorage.setItem('authUser', full_name);
         if ( token ) {
             localStorage.setItem('token', token);
         }
-        setIsAuthorized(username);
+        setIsAuthorized(full_name);
     };
 
     // logout func

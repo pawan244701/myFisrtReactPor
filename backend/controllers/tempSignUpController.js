@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import { BrevoClient } from '@getbrevo/brevo';
 
 export const tempUserSignup = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { full_name, email, password } = req.body;
 
     const otpclient = new BrevoClient({
         apiKey: process.env.BREVO_API_KEY
@@ -42,14 +42,14 @@ export const tempUserSignup = async (req, res) => {
 
         //saving data in DB table named: pendingVerificationUsers
         await pool.query(
-            `INSERT INTO pendingVerificationUsers (username, email, password, otpCode, expiresAt)
+            `INSERT INTO pendingVerificationUsers (full_name, email, password, otpCode, expiresAt)
                  VALUES (?, ?, ?, ?, ?)
                  ON DUPLICATE KEY UPDATE 
-                    username = VALUES(username),
+                    full_name = VALUES(full_name),
                     password = VALUES(password),
                     otpCode = VALUES(otpCode),
                     expiresAt = VALUES(expiresAt)`,
-            [username, email, hashedPassword, genOtp, expiresAt] // this is expiresAt is not defined
+            [full_name, email, hashedPassword, genOtp, expiresAt] // this is expiresAt is not defined
         );
 
         // send otp email 

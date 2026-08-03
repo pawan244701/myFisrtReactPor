@@ -43,7 +43,7 @@ export const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                authUserFunc(data.username, data.token);
+                authUserFunc(data.full_name, data.token);
                 navigate(`/`);
             }
             else {

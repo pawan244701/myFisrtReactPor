@@ -29,14 +29,14 @@ export const userLogin = async (req, res) => {
         const payload = {
             userId: userExists.id,
             email: userExists.email,
-            username: userExists.username
+            full_name: userExists.full_name
         };
         const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '1d'});
 
         return res.status(200).json({
             message: "Login successful",
             token: token,
-            username: userExists.username
+            full_name: userExists.full_name
         });
 
     } catch (err) {

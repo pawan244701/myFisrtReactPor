@@ -15,6 +15,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
 import logoImg from "./assets/logoImg/kali.png";
+// import { UserProfile } from './pages/UserProfile';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          {/* <Route path='/:username' element={<UserProfile />} /> */}
           <Route path='/games' element={<Games />} />
           {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
         </Routes>

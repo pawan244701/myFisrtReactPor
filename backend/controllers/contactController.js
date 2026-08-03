@@ -7,7 +7,7 @@ export const userMessage = async (req, res) => {
     
     const senderEmail = req.user.email;
     const userId = req.user.userId;
-    const username = req.user.username;
+    const full_name = req.user.full_name;
 
     const userMSG = new BrevoClient({
         apiKey: process.env.BREVO_API_KEY
@@ -27,10 +27,10 @@ export const userMessage = async (req, res) => {
         }
 
         await userMSG.transactionalEmails.sendTransacEmail({
-            subject: `Portfolio msg: From: ${username}`,
-            textContent: `User: ${username} (${senderEmail})\nMessage: \n${message}`,
+            subject: `Portfolio msg: From: ${full_name}`,
+            textContent: `User: ${full_name} (${senderEmail})\nMessage: \n${message}`,
             sender: { 
-                "name": username, 
+                "name": full_name, 
                 "email": process.env.MY_EMAIL 
             },
             replyTo: {email: senderEmail },
@@ -38,9 +38,9 @@ export const userMessage = async (req, res) => {
         });
 
         await pool.query(
-            `INSERT INTO emailServiceUsed (username, email)
+            `INSERT INTO emailServiceUsed (full_name, email)
              VALUES (?, ?)`,
-            [ username, senderEmail ]
+            [ full_name, senderEmail ]
         );
 
         return res.status(200).json({

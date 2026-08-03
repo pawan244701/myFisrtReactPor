@@ -13,7 +13,7 @@ export const Signup = () => {
     const [error, setError] = useState(null);
     // creating state obj so that we won't need to create four saperate states for all inputs
     const [formData, setFormData] = useState({
-        username: '',
+        full_name: '',
         email: '',
         password: '',
         confirmPassword: ''
@@ -31,12 +31,12 @@ export const Signup = () => {
         const isPasswordLengthOk = formData.password.length >= 8;
         const isPasswordMatching = formData.password === formData.confirmPassword;
         const isEmailCorrect = formData.email.includes('@') && formData.email.includes('.')
-        const isUsernameOk = formData.username.trim().length >= 3;
+        const isFull_nameOk = formData.full_name.trim().length >= 3;
         // console.log(`lenght: ${isPasswordLengthOk} | pass matchign : ${isPasswordMatching}`)
-        // return isPasswordLengthOk && isPasswordMatching && isEmailCurrect && isUsername;
+        // return isPasswordLengthOk && isPasswordMatching && isEmailCurrect && isFull_name;
 
-        if (!isUsernameOk) {
-            setError('Username must be at least 3 characters long.');
+        if (!isFull_nameOk) {
+            setError('full_name must be at least 3 characters long.');
             return false;
         }
 
@@ -69,7 +69,7 @@ export const Signup = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username: formData.username,
+                    full_name: formData.full_name,
                     email: formData.email,
                     password: formData.password
                 }),
@@ -80,7 +80,7 @@ export const Signup = () => {
 
             if (response.ok) {
                 setIsOtpSent(true);
-                // authUserFunc(formData.username);
+                // authUserFunc(formData.full_name);
                 // navigate(`/`);
             }
             else {
@@ -120,7 +120,7 @@ export const Signup = () => {
             const data = textData ? JSON.parse(textData) : {};
 
             if (response.ok) {
-                authUserFunc(formData.username, data.token);
+                authUserFunc(formData.full_name, data.token);
                 navigate(`/`);
             } else {
                 setError(data.message || 'Verification failed. Invalid or Expired Otp. Please signup again.');
@@ -152,19 +152,19 @@ export const Signup = () => {
                     <div className={styles['input-group']}>
                         <label
                             className={styles['signup-label']}
-                            htmlFor="username"
-                        >Enter Username
+                            htmlFor="full_name"
+                        >Enter Full_name
                         </label>
 
                         <input
                             className={styles['signup-input']}
                             type="text"
-                            id="username"
-                            name='username'
-                            placeholder="Username"
-                            autoComplete="username"
+                            id="full_name"
+                            name='full_name'
+                            placeholder="full_name"
+                            autoComplete="full_name"
                             required
-                            value={formData.username}
+                            value={formData.full_name}
                             onChange={handleChange}
                         />
                     </div>
