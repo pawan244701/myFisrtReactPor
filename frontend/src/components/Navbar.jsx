@@ -13,20 +13,29 @@ export const Navbar = ({ logoSrc }) => {
     const buttonRef = useRef(null);
 
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpen((prev) => !prev);
+    };
+    const handleLinkClick = () => {
+        setIsOpen(false); // Close menu when a navigation link is clicked
     };
 
     useEffect(() => {
-        const handleClickOutside = ( event ) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+        const handleClickOutside = (event) => {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target)
+            ) {
                 setIsOpen(false);
             }
-        }
+        };
+
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
-        }; 
-    }, [isOpen]);
+        };
+    }, []);
 
     return (
         <div className={styles["main-container"]}>
@@ -38,8 +47,8 @@ export const Navbar = ({ logoSrc }) => {
                 />
             </div >
 
-            <div className={`${styles['toggle-container']} ${isOpen ? styles.open : ''}`}>
-                <Link to='/userProfile' className={styles['nav-links']}>Profile</Link>
+            <div ref={menuRef} className={`${styles['toggle-container']} ${isOpen ? styles.open : ''}`}>
+                <Link to='/explore' className={styles['nav-links']}>Explore</Link>
                 <Link to='/home' className={styles['nav-links']}>Home</Link>
                 <Link to='/contact' className={styles['nav-links']}>Contact</Link>
                 <Link
@@ -53,7 +62,7 @@ export const Navbar = ({ logoSrc }) => {
 
             </div>
             <button
-            ref={menuRef}
+                ref={buttonRef}
                 className={styles['hamburger-menu']}
                 onClick={toggleMenu}
             >&#128100;

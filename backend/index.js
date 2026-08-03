@@ -13,8 +13,8 @@ const app = express();
 app.use(helmet());
 app.use(express.json());
 
-app.use(cors());
-app.use(corsFuncAllowedOrigins);
+// app.use(cors());
+// app.use(corsFuncAllowedOrigins);
 
 // i'm usign render adn render works as proxy, so this line ignore the render's ip and restrict only user
 app.set('trust proxy', 1);

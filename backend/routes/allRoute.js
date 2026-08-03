@@ -14,6 +14,7 @@ import { userLogin } from '../controllers/loginController.js'; // don't forget t
 import { userMessage } from '../controllers/contactController.js'
 import { createPublicProfile } from '../controllers/createUserPublicProfileController.js'; // don't forget to type keyword: 'from'
 import { updatePublicProfile } from '../controllers/updateUserPublicProfileController.js';
+import { getPublicProfile } from '../controllers/visitUserProfileController.js';
 
 export const router = express.Router();
 
@@ -23,4 +24,5 @@ router.post('/login', authLimiter, validate(loginSchema), userLogin);
 router.post('/contact',authLimiter, verifyToken, userMessage);
 router.post('/public-profile', verifyToken, createPublicProfile);
 router.put('/public-profile', verifyToken, updatePublicProfile);
+router.get('/:username', getPublicProfile);
 

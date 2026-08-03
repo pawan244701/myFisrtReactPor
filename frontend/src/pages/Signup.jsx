@@ -162,7 +162,7 @@ export const Signup = () => {
                             id="full_name"
                             name='full_name'
                             placeholder="full_name"
-                            autoComplete="full_name"
+                            autoComplete="name"
                             required
                             value={formData.full_name}
                             onChange={handleChange}
