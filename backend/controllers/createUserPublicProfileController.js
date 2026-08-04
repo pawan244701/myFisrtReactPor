@@ -3,14 +3,27 @@ import { pool } from '../config/database.js';
 
 export const createPublicProfile = async (req, res) => {
 
+    // null was not working because FR is sending empty stritg, that's not undefined there is something
+    // and DB can't store empty strign into date it needs null or exect formated date so it gave me err 192 
+
     const {
         username,
-        bio = null,
-        country = null,
-        area = null,
-        gender = null,
-        dateOfBirth = null
+        bio,
+        country,
+        area,
+        gender,
+        dateOfBirth
     } = req.body;
+
+    // this is to convert empty or only-space string to null 
+    // doing this because got error HAHAHAHHAHAH
+    const normalizeValue = (val) => {
+        if (typeof val === 'string') {
+            const trimmed = val.trim();
+            return trimmed === '' ? null : trimmed;
+        }
+        return val ?? null;
+    }
 
     // getting auth user details provided by verifyToken middleware
     const userId = req.user?.userId;
@@ -29,18 +42,34 @@ export const createPublicProfile = async (req, res) => {
         });
     }
 
+    // 
+    const cleanedBio = normalizeValue(bio);
+    const cleanedCountry = normalizeValue(country);
+    const cleanedArea = normalizeValue(area);
+    const cleanedGender = normalizeValue(gender);
+    const cleanedDoB = normalizeValue(dateOfBirth);
+
     try {
         await pool.query(
             `INSERT INTO userPublicProfile 
             (user_id, username, bio, country, area, gender, dateOfBirth) 
             VALUES (?, ?, ?, ?, ?, ?, ?)`,
-            [userId, username.trim(), bio, country, area, gender, dateOfBirth]
-        );
+            [
+                userId,
+                username.trim(),
+                cleanedBio,
+                cleanedCountry,
+                cleanedArea,
+                cleanedGender,
+                cleanedDoB
+            ]);
 
         return res.status(201).json({
             message: `${name}, your public profile has been created!`,
             profile: {
-                username: username.trim(), country, area
+                username: username.trim(),
+                country: cleanedCountry,
+                area: cleanedArea
             }
         });
 
