@@ -169,7 +169,7 @@ export const CreatePublicProfile = () => {
                     <div>
                         <label htmlFor="bio">Bio</label>
                         <textarea
-                            placeholder='e.g. I am Pawan Yadav, a Full-Stack developr'
+                            placeholder='e.g. I am Pawan Yadav, a Full-Stack developer'
                             name="bio"
                             id="bio"
                             value={formData.bio}

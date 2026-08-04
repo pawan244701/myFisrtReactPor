@@ -5,12 +5,12 @@ import { useAuth } from '../contexts/AuthContext';
 
 export const Hero = () => {
 
-    const { isAuthorized } = useAuth();
+    const { user } = useAuth();
 
     return (
         <section className={styles['main-section']}>
             <header className={styles['main-header']}>
-                <h2>Hi {isAuthorized || 'Visitor'}, I'm Pawan Yadav</h2>
+                <h2>Hi {user || 'Visitor'}, I'm Pawan Yadav</h2>
                 <h3>Welcome to the project</h3>
                 <p>
                     I'm open to get Good Advices so if you have any message me on
