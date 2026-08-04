@@ -26,5 +26,17 @@ export const corsFuncAllowedOrigins = (req, res, next) => {
             message: "Direct API requests or third-party apps are not allowed. Please visit our website."
         });
     }
+
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Methods', 'POST, PUT, OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+
     next();
 };
+
+
+

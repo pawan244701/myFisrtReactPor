@@ -22,7 +22,9 @@ router.post('/signup', authLimiter, validate(signupSchema), tempUserSignup);
 router.post('/verify-otp', authLimiter, validate(verifyOtpSchema), verifySignUpOtp);
 router.post('/login', authLimiter, validate(loginSchema), userLogin);
 router.post('/contact',authLimiter, verifyToken, userMessage);
-router.post('/public-profile', verifyToken, createPublicProfile);
-router.put('/public-profile', verifyToken, updatePublicProfile);
+// router.post('/public-profile', verifyToken, createPublicProfile);
+// router.put('/public-profile', verifyToken, updatePublicProfile);
 router.get('/:username', getPublicProfile);
 
+router.post('/public-profile', createPublicProfile);
+router.put('/public-profile', updatePublicProfile);
