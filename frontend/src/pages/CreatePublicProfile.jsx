@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import styles from './CreatePublicProfile.module.css';
 export const CreatePublicProfile = () => {
 
-    const { token } = useAuth();
+    const { token, checkUserProfile } = useAuth();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -58,6 +58,7 @@ export const CreatePublicProfile = () => {
         setError(null);
 
         // import.meta.env.VITE_PUBLIC_ACCOUNT_CREATION_API
+        // import.meta.env.VITE_PUBLIC_ACCOUNT_CREATION_API_LOCAL
         try {
             const response = await fetch(import.meta.env.VITE_PUBLIC_ACCOUNT_CREATION_API, {
                 method: "POST",
@@ -72,12 +73,13 @@ export const CreatePublicProfile = () => {
             const data = textData ? JSON.parse(textData) : {};
 
             if (response.ok) {
-                navigate(`/`);
+                await checkUserProfile(token);
+                navigate(`/profile`);
             } else {
                 setError(data.message || 'Something went wrong! Please try again.');
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             setError('Server connection Error. Please try again.');
         }
     };

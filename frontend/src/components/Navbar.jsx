@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 import styles from './Navbar.module.css';
 
 export const Navbar = ({ logoSrc }) => {
-    const { isAuthorized, logout } = useAuth();
+    const { isAuthorized, logout, isVisible, profileDetails } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
 
     const menuRef = useRef(null);
@@ -47,19 +47,43 @@ export const Navbar = ({ logoSrc }) => {
                 />
             </div >
 
-            <div ref={menuRef} className={`${styles['toggle-container']} ${isOpen ? styles.open : ''}`}>
-                <Link to='/explore' className={styles['nav-links']}>Explore</Link>
+            <div ref={menuRef} 
+            className={`${styles['toggle-container']} 
+            ${isOpen ? styles.open : ''}`}>
+
+{isAuthorized && isVisible && profileDetails && (
+                    <Link
+                        to={`/${profileDetails}`}
+                        className={styles['nav-links']}
+                        onClick={handleLinkClick}
+                    >
+                        Profile
+                    </Link>
+                )}
+                {isAuthorized && !isVisible && (
+                    <Link
+                        to='/be-visible'
+                        className={styles['nav-links']}
+                        onClick={handleLinkClick}
+                    >
+                        Be-Visible
+                    </Link>
+                )}
+
                 <Link to='/home' className={styles['nav-links']}>Home</Link>
                 <Link to='/contact' className={styles['nav-links']}>Contact</Link>
+
                 <Link
                     to='/login'
                     className={styles['nav-links']}
                     onClick={isAuthorized ? logout : undefined}
                 >{isAuthorized ? 'Logout' : 'Login'}
                 </Link>
-
-                {!isAuthorized && (<Link to='/signup' className={styles['nav-links']}>Signup</Link>)}
-
+                {!isAuthorized && (
+                    <Link
+                        to='/signup'
+                        className={styles['nav-links']}
+                    >Signup</Link>)}
             </div>
             <button
                 ref={buttonRef}

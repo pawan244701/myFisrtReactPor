@@ -12,9 +12,9 @@ import { tempUserSignup } from '../controllers/tempSignUpController.js'; // don'
 import { verifySignUpOtp } from '../controllers/verifySignUpOtpController.js';
 import { userLogin } from '../controllers/loginController.js'; // don't forget to import otherwise you'll get: Error [ReferenceError: userLogin is not defined]
 import { userMessage } from '../controllers/contactController.js'
-import { createPublicProfile } from '../controllers/createUserPublicProfileController.js'; // don't forget to type keyword: 'from'
-import { updatePublicProfile } from '../controllers/updateUserPublicProfileController.js';
-import { getPublicProfile } from '../controllers/visitUserProfileController.js';
+import { createPublicProfile } from '../controllers/userCreatePublicProfileController.js'; // don't forget to type keyword: 'from'
+import { updatePublicProfile } from '../controllers/userUpdatePublicProfileController.js';
+import { getMyProfile, getPublicProfile } from '../controllers/userGetProfileController.js';
 
 export const router = express.Router();
 
@@ -24,5 +24,6 @@ router.post('/login', authLimiter, validate(loginSchema), userLogin);
 router.post('/contact',authLimiter, verifyToken, userMessage);
 router.post('/public-profile', verifyToken, createPublicProfile);
 router.put('/public-profile', verifyToken, updatePublicProfile);
+router.get('/me', verifyToken, getMyProfile);
 router.get('/:username', getPublicProfile);
 

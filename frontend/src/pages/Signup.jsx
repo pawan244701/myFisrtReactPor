@@ -62,6 +62,7 @@ export const Signup = () => {
         setIsLoading(true);
 
         // import.meta.env.VITE_SIGNUP_API
+        // import.meta.env.VITE_SIGNUP_API_LOCAL
         try {
             const response = await fetch(import.meta.env.VITE_SIGNUP_API, {
                 method: 'POST',
@@ -105,7 +106,7 @@ export const Signup = () => {
 
         try {
             // import.meta.env.VITE_VERIFY_OTP_API
-            const response = await fetch(import.meta.env.VITE_VERIFY_OTP_API, {
+            const response = await fetch('http://localhost:9999/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

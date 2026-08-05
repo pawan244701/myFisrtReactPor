@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useEffect } from "react";
 const AuthContext = createContext(); // assigning it to var it's a kind of func / method that creates context obj
 
 export const AuthProvider = ({ children }) => {
@@ -13,6 +14,49 @@ export const AuthProvider = ({ children }) => {
         return localStorage.getItem('token') || null;
     });
 
+    const [ isVisible, setIsVisible ] = useState(false);
+    const [ profileDetails, setProfileDetails ] = useState(false);
+
+    const checkUserProfile = async (authToken) => {
+        const activeToken = authToken || token;
+        if (!activeToken) {
+            setIsVisible(false);
+            setProfileDetails(null);
+            return;
+        }
+        // VITE_MY_PUBLIC_ACCOUNT_API
+        // VITE_MY_PUBLIC_ACCOUNT_API_LOCAL
+        try {
+            const response = await fetch(import.meta.env.VITE_MY_PUBLIC_ACCOUNT_API, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${activeToken}`
+                }
+            });
+            const data = await response.json();
+            if (response.ok && data.profile) {
+                setIsVisible(true);
+                setProfileDetails(data.profile.username);
+            } else {
+                setIsVisible(false);
+                setProfileDetails(null);
+            }
+        } catch (error) {
+            console.error('Error verifiing pro: ', error);
+            setIsVisible(false);
+            setProfileDetails(null);
+        }
+    }
+    // fetching profile whenever token changge or init load
+    useEffect(()=> {
+        if (token) {
+            checkUserProfile(token);
+        } else {
+            setIsVisible(false);
+            setProfileDetails(null);
+        }
+    }, [token]);
+
     const authUserFunc = (full_name, authToken) => {
         localStorage.setItem('authUser', full_name);
         setUser(full_name);
@@ -20,6 +64,8 @@ export const AuthProvider = ({ children }) => {
         if (authToken) {
             localStorage.setItem('token', authToken);
             setToken(authToken);
+            // checking profile after stting token
+            checkUserProfile(authToken);
         }
     };
     const logout = () => {
@@ -27,6 +73,8 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('token');
         setUser(null);
         setToken(null);
+        setIsVisible(false);
+        setProfileDetails(null);
     };
 
     return (
@@ -41,7 +89,12 @@ export const AuthProvider = ({ children }) => {
             token, // passing it so other can use
             isAuthorized: !!token, // this will return boolean True if token exists 
             authUserFunc, 
-            logout
+            logout,
+            isVisible,
+            setIsVisible,
+            profileDetails,
+            setProfileDetails,
+            checkUserProfile
         }}
             >
             {children}

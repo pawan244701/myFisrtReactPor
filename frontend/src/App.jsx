@@ -9,6 +9,7 @@ import { Privacy } from './pages/Privacy';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Games } from './pages/Games';
+import { UserProfile } from './pages/UserProfile';
 
 import styles from './App.module.css';
 import { Navbar } from './components/Navbar';
@@ -35,8 +36,10 @@ function App() {
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-          {/* <Route path='/:username' element={<UserProfile />} /> */}
-          <Route path='/explore' element={<CreatePublicProfile />} />
+
+          <Route path='/be-visible' element={<CreatePublicProfile />} />
+          <Route path='/:username' element={<UserProfile />} />
+
           {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
         </Routes>
       </main>

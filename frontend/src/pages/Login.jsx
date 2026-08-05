@@ -27,7 +27,8 @@ export const Login = () => {
             setError('Password must be at least 8 characters long.');
             return;
         }
-        //import.meta.env.VITE_LOGIN_API
+        // import.meta.env.VITE_LOGIN_API
+        // import.meta.env.VITE_LOGIN_API_LOCAL
         try {
             const response = await fetch(import.meta.env.VITE_LOGIN_API, {
                 method: 'POST',
@@ -50,7 +51,7 @@ export const Login = () => {
                 setError(data.message || 'Login failed due to Invalid details!');
             }
         } catch (error) {
-            // console.log('Full Error: ', error);
+            console.log('Full Error: ', error);
             if (error.message === "Failed to fetch") {
                 setError('Unable to reach Server. Please try again in a few seconds!');
             } else {
