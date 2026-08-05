@@ -5,18 +5,21 @@ import { useAuth } from '../contexts/AuthContext';
 export const UserProfile = () => {
     const { username } = useParams(); // Reads username from URL /profile/:username
     const { user: loggedInUserName } = useAuth(); // Reads current logged-in user
-    
+
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // VITE_USER_ACCOUNT_API
-    // VITE_USER_ACCOUNT_API_LOCAL
-
+    // VITE_BASE_API
+    // VITE_BASE_API_LOCAL
+    const VITE_BASE_API = import.meta.env.VITE_BASE_API;
     useEffect(() => {
         const fetchProfile = async () => {
+            // 1. Resetign state whenever username changes
+            setLoading(true);
+            setError(null);
             try {
-                const response = await fetch(import.meta.env.VITE_USER_ACCOUNT_API);
+                const response = await fetch(`${VITE_BASE_API}/${username}`);
                 const data = await response.json();
 
                 if (response.ok) {
@@ -31,8 +34,10 @@ export const UserProfile = () => {
             }
         };
 
-        fetchProfile();
-    }, [username]);
+        if (username) {
+            fetchProfile();
+        }
+    }, [username, VITE_BASE_API]);
 
     if (loading) return <div>Loading profile...</div>;
     if (error) return <div>{error}</div>;
