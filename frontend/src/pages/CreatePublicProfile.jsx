@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 import styles from './CreatePublicProfile.module.css';
+
 export const CreatePublicProfile = () => {
 
     const { token, checkUserProfile } = useAuth();
@@ -40,18 +41,19 @@ export const CreatePublicProfile = () => {
 
     const isCurrentStepValid = () => {
         if (currentStep === 1) {
-            return formData.username.trim();
+            const username = formData.username.trim();
 
             if (!username) {
                 setError('Username is required!');
                 return false;
             }
-        }
-        // Regex ensuring only letters, numbers, and underscores are allowed
-        const validUsernameRegex = /^[a-zA-Z0-9_]+$/;
-        if (!validUsernameRegex.test(username)) {
-            setError('Username cannot contain spaces or special characters (@, #, etc.)!');
-            return false;
+
+            // Regex ensuring only letters, numbers, and underscores are allowed
+            const validUsernameRegex = /^[a-zA-Z0-9_]+$/;
+            if (!validUsernameRegex.test(username)) { // why this username is show as undefined
+                setError('Username cannot contain spaces or special characters (@, #, etc.)!');
+                return false;
+            }
         }
         return true;
     };

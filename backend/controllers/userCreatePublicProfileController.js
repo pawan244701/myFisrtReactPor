@@ -39,7 +39,7 @@ export const createPublicProfile = async (req, res) => {
     const trimmedUsername = typeof username === 'string' ? username.trim() : '';
 
     // required field check
-    if (!username || username.trim() === ' ') {
+    if (!trimmedUsername) {
         return res.status(400).json({
             message: 'Username is required to create a public profile.'
         });
