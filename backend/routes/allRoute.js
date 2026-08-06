@@ -14,7 +14,7 @@ import { userLogin } from '../controllers/loginController.js'; // don't forget t
 import { userMessage } from '../controllers/contactController.js'
 import { createPublicProfile } from '../controllers/userCreatePublicProfileController.js'; // don't forget to type keyword: 'from'
 import { updatePublicProfile } from '../controllers/userUpdatePublicProfileController.js';
-import { getMyProfile, getPublicProfile } from '../controllers/userGetProfileController.js';
+import { getMyProfile, getPublicProfile, getAllPublicProfiles } from '../controllers/userGetProfileController.js';
 
 export const router = express.Router();
 
@@ -25,5 +25,5 @@ router.post('/contact',authLimiter, verifyToken, userMessage);
 router.post('/public-profile', verifyToken, createPublicProfile);
 router.put('/public-profile', verifyToken, updatePublicProfile);
 router.get('/me', verifyToken, getMyProfile);
+router.get('/allProfiles', getAllPublicProfiles);
 router.get('/:username', getPublicProfile);
-

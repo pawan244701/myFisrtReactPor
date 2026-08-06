@@ -17,6 +17,7 @@ import { Footer } from './components/Footer';
 
 import logoImg from "./assets/logoImg/kali.png";
 import { CreatePublicProfile } from './pages/CreatePublicProfile';
+import { AllPublicUsersProfile } from './pages/AllPublicUsersProfile';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           {/* Route : these can be multiples in a return, these are indivisual... like: i can say URL, It works like: path = what is in URL e.g. : my-site.com/ and element = is what React will render on the associated path */}
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/explore' element={<AllPublicUsersProfile />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/privacy' element={<Privacy />} />
@@ -43,7 +45,7 @@ function App() {
           {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

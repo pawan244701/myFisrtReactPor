@@ -61,3 +61,21 @@ export const getMyProfile = async (req, res) => {
 
 
 
+export const getAllPublicProfiles = async (req, res) => {
+    try {
+        const [ allUsers ] = await pool.query(`
+            SELECT u.full_name, p.username, p.bio, p.country, p.area, p.gender, p.dateOfBirth, p.created_at 
+            FROM userPublicProfile p
+            JOIN users u ON p.user_id = u.id 
+            ORDER BY p.created_at DESC
+            `);
+            return res.status(200).json({
+                profiles: allUsers
+            });
+    } catch (error) {
+        console.error("erro from fetching all profiles: ", error);
+        return this.status(500).json({
+            message: "Server errors could not fetch profiles!"
+        });
+    }
+}

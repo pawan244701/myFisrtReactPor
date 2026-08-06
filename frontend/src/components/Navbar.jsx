@@ -39,19 +39,21 @@ export const Navbar = ({ logoSrc }) => {
 
     return (
         <div className={styles["main-container"]}>
-            <div className={styles["logo-container"]}>
-                <img
-                    src={logoSrc}
-                    alt='Logo'
-                    className={styles['actual-logo']}
-                />
-            </div >
+            <Link to='/home' className={styles['nav-links']}>
+                <div className={styles["logo-container"]}>
+                    <img
+                        src={logoSrc}
+                        alt='Logo'
+                        className={styles['actual-logo']}
+                    />
+                </div >
+            </Link>
 
-            <div ref={menuRef} 
-            className={`${styles['toggle-container']} 
+            <div ref={menuRef}
+                className={`${styles['toggle-container']} 
             ${isOpen ? styles.open : ''}`}>
 
-{isAuthorized && isVisible && profileDetails && (
+                {isAuthorized && isVisible && profileDetails && (
                     <Link
                         to={`/${profileDetails}`}
                         className={styles['nav-links']}
@@ -70,7 +72,9 @@ export const Navbar = ({ logoSrc }) => {
                     </Link>
                 )}
 
-                <Link to='/home' className={styles['nav-links']}>Home</Link>
+
+                <Link to='/explore' className={styles['nav-links']}>Explore</Link>
+
                 <Link to='/contact' className={styles['nav-links']}>Contact</Link>
 
                 <Link
