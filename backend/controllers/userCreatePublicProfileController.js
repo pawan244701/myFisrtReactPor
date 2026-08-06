@@ -35,14 +35,25 @@ export const createPublicProfile = async (req, res) => {
         });
     }
 
+    // 1. Check if username is present
+    const trimmedUsername = typeof username === 'string' ? username.trim() : '';
+
     // required field check
-    if (!username || username.trim() === '') {
+    if (!username || username.trim() === ' ') {
         return res.status(400).json({
             message: 'Username is required to create a public profile.'
         });
     }
 
-    // 
+    // filter to reject specail chars
+    const usernameRegex = /^[a-zA-Z0-9_]+$/;
+    if (!usernameRegex.test(trimmedUsername)) {
+        return res.status(400).json({
+            message: 'Username can only contain letters, numbers, and underscores (_). No spaces, @, or # allowed!'
+        });
+    }
+
+    // normalizign option fields
     const cleanedBio = normalizeValue(bio);
     const cleanedCountry = normalizeValue(country);
     const cleanedArea = normalizeValue(area);
@@ -56,7 +67,7 @@ export const createPublicProfile = async (req, res) => {
             VALUES (?, ?, ?, ?, ?, ?, ?)`,
             [
                 userId,
-                username.trim(),
+                trimmedUsername,
                 cleanedBio,
                 cleanedCountry,
                 cleanedArea,
@@ -67,7 +78,7 @@ export const createPublicProfile = async (req, res) => {
         return res.status(201).json({
             message: `${name}, your public profile has been created!`,
             profile: {
-                username: username.trim(),
+                username: trimmedUsername,
                 country: cleanedCountry,
                 area: cleanedArea
             }
@@ -77,7 +88,6 @@ export const createPublicProfile = async (req, res) => {
         console.error('Profile Creating Error:', error);
 
         if (error.code === 'ER_DUP_ENTRY' || error.errno === 1062) {
-
             // Check if error message mentions: user_id or username
             if (error.sqlMessage && error.sqlMessage.includes('user_id')) {
                 return res.status(400).json({

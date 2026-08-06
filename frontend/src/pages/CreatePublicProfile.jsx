@@ -22,15 +22,36 @@ export const CreatePublicProfile = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((previousData) => ({
-            ...previousData,
-            [name]: value
-        }))
+        if (name === 'username') {
+            // preventing special chars to be used in username
+            const cleanedUsername = value.replace(/[^a-zA-Z0-9_]/g, '');
+
+            setFormData((previousData) => ({
+                ...previousData,
+                username: cleanedUsername
+            }));
+        } else {
+            setFormData((previousData) => ({
+                ...previousData,
+                [name]: value
+            }));
+        }
     }
 
     const isCurrentStepValid = () => {
         if (currentStep === 1) {
-            return formData.username.trim() !== '';
+            return formData.username.trim();
+
+            if (!username) {
+                setError('Username is required!');
+                return false;
+            }
+        }
+        // Regex ensuring only letters, numbers, and underscores are allowed
+        const validUsernameRegex = /^[a-zA-Z0-9_]+$/;
+        if (!validUsernameRegex.test(username)) {
+            setError('Username cannot contain spaces or special characters (@, #, etc.)!');
+            return false;
         }
         return true;
     };
@@ -109,6 +130,9 @@ export const CreatePublicProfile = () => {
                             value={formData.username}
                             onChange={handleChange}
                         />
+                        <small>
+                            Only letters, numbers, and underscores are allowed (no spaces or @, #, $).
+                        </small>
                     </div>
                 )}
                 {currentStep === 2 && (
@@ -194,4 +218,3 @@ export const CreatePublicProfile = () => {
         </div >
     );
 };
-
