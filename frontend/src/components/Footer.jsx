@@ -31,9 +31,9 @@ export const Footer = () => {
                                 rel='noopener noreferrer'
                             >Privacy-Policy</Link>
                         </li>
-                        <li className={styles['list']}>
+                        {/* <li className={styles['list']}>
                             <Link to="/games">Games</Link>
-                        </li>
+                        </li> */}
                         <li className={styles['list']}>
                             <Link to="/contact">Contact</Link>
                         </li>

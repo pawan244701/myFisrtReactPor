@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 import styles from './CreatePublicProfile.module.css';
+import { useRef } from 'react';
 
 export const CreatePublicProfile = () => {
+
+    // to make input auto focus on render
+    const inputRef = useRef(null);
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
 
     const { token, checkUserProfile } = useAuth();
     const navigate = useNavigate();
@@ -60,7 +69,7 @@ export const CreatePublicProfile = () => {
 
     const handleClickNext = () => {
         if (!isCurrentStepValid()) {
-            setError('Please provide Username it id not optional!');
+            setError('Please provide Username it is not optional!');
             return;
         }
         setError(null);
@@ -108,21 +117,29 @@ export const CreatePublicProfile = () => {
     };
 
     return (
-        <div>
+        <div className={styles['main-container']}>
             <h1>Create Public Account</h1>
-            {error && (
-                <div className={styles['input-group-error']}
-                    role='alert'>
-                    <label className={styles['login-error']}>
-                        {error}
-                    </label>
-                </div>
-            )}
-            <form onSubmit={handleSubmit}>
+            <form
+                className={styles['create-form']}
+                onSubmit={handleSubmit}>
+                {error && (
+                    <div className={styles['input-group-error']}
+                        role='alert'>
+                        <label className={styles['login-error']}>
+                            {error}
+                        </label>
+                    </div>
+                )}
                 {currentStep === 1 && (
-                    <div>
-                        <label htmlFor="username">Enter Username</label>
+                    <div className={styles['input-group']}>
+                        <label
+                            className={styles['create-label']}
+                            htmlFor="username"
+                        >
+                            Enter Username</label>
                         <input
+                            ref={inputRef}
+                            className={styles['create-input']}
                             type="text"
                             id='username'
                             name='username'
@@ -138,9 +155,13 @@ export const CreatePublicProfile = () => {
                     </div>
                 )}
                 {currentStep === 2 && (
-                    <div>
-                        <label htmlFor="gender">Gender</label>
+                    <div className={styles['input-group']}>
+                        <label
+                            className={styles['create-label']}
+                            htmlFor="gender"
+                        >Gender</label>
                         <select
+                            className={styles['create-input']}
                             name="gender"
                             id="gender"
                             value={formData.gender}
@@ -154,9 +175,13 @@ export const CreatePublicProfile = () => {
                     </div>
                 )}
                 {currentStep === 3 && (
-                    <div>
-                        <label htmlFor="dateOfBirth">DoB</label>
+                    <div className={styles['input-group']}>
+                        <label
+                            className={styles['create-label']}
+                            htmlFor="dateOfBirth"
+                        >DoB</label>
                         <input
+                            className={styles['create-input']}
                             type="date"
                             name="dateOfBirth"
                             id="dateOfBirth"
@@ -166,9 +191,13 @@ export const CreatePublicProfile = () => {
                     </div>
                 )}
                 {currentStep === 4 && (
-                    <div>
-                        <label htmlFor="country">Country</label>
+                    <div className={styles['input-group']}>
+                        <label
+                            className={styles['create-label']}
+                            htmlFor="country"
+                        >Country</label>
                         <input
+                            className={styles['create-input']}
                             type="text"
                             placeholder='e.g. India'
                             name="country"
@@ -180,9 +209,13 @@ export const CreatePublicProfile = () => {
                     </div>
                 )}
                 {currentStep === 5 && (
-                    <div>
-                        <label htmlFor="area">Area</label>
+                    <div className={styles['input-group']}>
+                        <label
+                            className={styles['create-label']}
+                            htmlFor="area"
+                        >Area</label>
                         <input
+                            className={styles['create-input']}
                             type="text"
                             placeholder='e.g. Mini Bypass, Bareilly'
                             name="area"
@@ -194,8 +227,11 @@ export const CreatePublicProfile = () => {
                     </div>
                 )}
                 {currentStep === 6 && (
-                    <div>
-                        <label htmlFor="bio">Bio</label>
+                    <div className={styles['input-group']}>
+                        <label
+                            className={styles['create-label']}
+                            htmlFor="bio"
+                        >Bio</label>
                         <textarea
                             placeholder='e.g. I am Pawan Yadav, a Full-Stack developer'
                             name="bio"
@@ -205,15 +241,27 @@ export const CreatePublicProfile = () => {
                         />
                     </div>
                 )}
-                <div>
+                <div
+                    className={styles['button-group']}>
                     {currentStep > 1 && (
-                        <button type='button' onClick={handleClickBack} >Back</button>
+                        <button
+                            className={styles['back-button']}
+                            type='button'
+                            onClick={handleClickBack}
+                        >Back</button>
                     )}
                     {currentStep < TOTAL_STEPS && (
-                        <button type='button' onClick={handleClickNext} >Next</button>
+                        <button
+                            className={styles['next-button']}
+                            type='button'
+                            onClick={handleClickNext}
+                        >Next</button>
                     )}
                     {currentStep === 6 && (
-                        <button type='submit' >Create</button>
+                        <button
+                            className={styles['submit-button']}
+                            type='submit'
+                        >Create</button>
                     )}
                 </div>
             </form >

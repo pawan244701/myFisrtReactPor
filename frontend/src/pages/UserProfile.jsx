@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+import styles from './UserProfile.module.css';
+
 export const UserProfile = () => {
     const { username } = useParams(); // Reads username from URL /profile/:username
     const { user: loggedInUserName } = useAuth(); // Reads current logged-in user
@@ -10,8 +12,6 @@ export const UserProfile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // VITE_BASE_API
-    // VITE_BASE_API_LOCAL
     const VITE_BASE_API = import.meta.env.VITE_BASE_API;
     useEffect(() => {
         const fetchProfile = async () => {
@@ -39,26 +39,43 @@ export const UserProfile = () => {
         }
     }, [username, VITE_BASE_API]);
 
-    if (loading) return <div>Loading profile...</div>;
-    if (error) return <div>{error}</div>;
+    if (loading) return <div className={styles['loading-status']}>Loading profile...</div>;
+    if (error) return <div className={styles['input-group-error']}
+        role='alert'>
+        <label className={styles['login-error']}>
+            {error}
+        </label>
+    </div>;
 
     // Check if the current visitor id the owns of profile
     const isOwner = loggedInUserName === profile.full_name;
 
     return (
-        <div className="profile-container">
-            <h1>@{profile.username}</h1>
-            <p><strong>Name:</strong> {profile.full_name}</p>
-            <p><strong>Bio:</strong> {profile.bio}</p>
-            <p><strong>Location:</strong> {profile.area}, {profile.country}</p>
-            <p><strong>Gender:</strong> {profile.gender}</p>
-            <p><strong>Date:</strong> {profile.dateOfBirth}</p>
+        <div className={styles['main-container']}>
 
-            {isOwner && (
-                <Link to="/edit-profile" className="edit-btn">
-                    Edit Profile
-                </Link>
-            )}
+            <div className={styles['main-profile-wrapper']}>
+                <div className={styles['profile-details-container']}>
+                    <div className={styles['profile-img']}>
+                        <h1>profile img</h1>
+                    </div>
+                    <div className={styles['profile-details']}>
+                        <h1>@{profile.username}</h1>
+                        <hr />
+                        <p><strong>Name:</strong> {profile.full_name}</p>
+                        <p><strong>Bio:</strong> {profile.bio}</p>
+                        <p><strong>Location:</strong> {profile.area}, {profile.country}</p>
+                        <p><strong>Gender:</strong> {profile.gender}</p>
+                        <p><strong>Date:</strong> {profile.dateOfBirth}</p>
+                    </div>
+                </div>
+                <div className={styles['edit-link']}>
+                    {isOwner && (
+                        <Link to="/edit-profile" className={styles['edit-button']}>
+                            Edit Profile
+                        </Link>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
