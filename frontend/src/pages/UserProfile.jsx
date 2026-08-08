@@ -49,7 +49,7 @@ export const UserProfile = () => {
     </div>;
 
     // Check if the current visitor id the owns of profile
-    const isOwner = loggedInUserName === profile.full_name;
+    const isOwner = loggedInUserName === profile.username; // making it username from full_name because names can be same 
 
     return (
         <div className={styles['main-container']}>

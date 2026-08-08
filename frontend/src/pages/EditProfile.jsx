@@ -24,7 +24,7 @@ export const EditProfile = () => {
         }
     }, []);
 
-
+    // this is to fetct data to show users their previously saved data
     useEffect(() => {
         const fetchcurrentProfile = async () => {
             try {
@@ -37,8 +37,8 @@ export const EditProfile = () => {
                 if (response.ok && data.profile) {
                     setFormData({
                         bio: data.profile.bio || '',
-                        bio: data.profile.country || '',
-                        bio: data.profile.area || ''
+                        country: data.profile.country || '',
+                        area: data.profile.area || ''
                     });
                 } else {
                     setError('Failed to fetch profile details');
@@ -138,7 +138,7 @@ export const EditProfile = () => {
                             placeholder='e.g. Mathura'
                             name="area"
                             id="area"
-                            autoComplete='area'
+                            autoComplete='off'
                             value={formData.area}
                             onChange={handleChange}
                         />
