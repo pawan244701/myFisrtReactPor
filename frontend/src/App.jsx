@@ -18,6 +18,7 @@ import { Footer } from './components/Footer';
 import logoImg from "./assets/logoImg/kali.png";
 import { CreatePublicProfile } from './pages/CreatePublicProfile';
 import { AllPublicUsersProfile } from './pages/AllPublicUsersProfile';
+import { EditProfile } from './pages/EditProfile';
 
 function App() {
   return (
@@ -38,8 +39,9 @@ function App() {
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-
           <Route path='/be-visible' element={<CreatePublicProfile />} />
+          <Route path='/edit-profile' element={<EditProfile />} />
+
           <Route path='/:username' element={<UserProfile />} />
 
           {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}

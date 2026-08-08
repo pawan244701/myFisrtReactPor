@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-
+import { useNavigate } from 'react-router-dom';
 import styles from './UserProfile.module.css';
 
 export const UserProfile = () => {
     const { username } = useParams(); // Reads username from URL /profile/:username
     const { user: loggedInUserName } = useAuth(); // Reads current logged-in user
 
+    const navigate = useNavigate();
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -69,13 +70,20 @@ export const UserProfile = () => {
                     </div>
                 </div>
                 <div className={styles['edit-link']}>
-                    {isOwner && (
-                        <Link to="/edit-profile" className={styles['edit-button']}>
-                            Edit Profile
-                        </Link>
-                    )}
+                    {
+                        isOwner ? (
+                            <Link to="/edit-profile" className={styles['edit-button']}>
+                                Edit Profile
+                            </Link>
+                        ) : (
+                            <Link to="/explore" className={styles['edit-button']}>
+                                Back
+                            </Link>
+                        )
+                    }
                 </div>
             </div>
         </div>
     );
 };
+

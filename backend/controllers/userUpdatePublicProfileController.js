@@ -28,7 +28,7 @@ export const updatePublicProfile = async (req, res) => {
             ]);
             // check got updatead or not
             if (result.affectedRows === 0) {
-                return res.status(440).json({
+                return res.status(404).json({
                     message: "No public profile found. Create one first!"
                 });
             }
