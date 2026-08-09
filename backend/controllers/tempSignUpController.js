@@ -37,7 +37,7 @@ export const tempUserSignup = async (req, res) => {
         const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
         // password incryption
-        const saltRound = 8;
+        const saltRound = 12;
         const hashedPassword = await bcrypt.hash(password, saltRound);
 
         //saving data in DB table named: pendingVerificationUsers
