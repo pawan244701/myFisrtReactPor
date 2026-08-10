@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     const [ isVisible, setIsVisible ] = useState(false);
-    const [ profileDetails, setProfileDetails ] = useState(false);
+    const [ profileDetails, setProfileDetails ] = useState(null);
 
     const checkUserProfile = async (authToken) => {
         const activeToken = authToken || token;
@@ -37,12 +37,15 @@ export const AuthProvider = ({ children }) => {
             if (response.ok && data.profile) {
                 setIsVisible(true);
                 setProfileDetails(data.profile.username);
+
+                setUser(data.profile.username);
+                localStorage.setItem('authUser', data.profile.username);
             } else {
                 setIsVisible(false);
                 setProfileDetails(null);
             }
         } catch (error) {
-            console.error('Error verifiing pro: ', error);
+            // console.error('Error verifiing pro: ', error);
             setIsVisible(false);
             setProfileDetails(null);
         }
@@ -57,9 +60,13 @@ export const AuthProvider = ({ children }) => {
         }
     }, [token]);
 
-    const authUserFunc = (full_name, authToken) => {
-        localStorage.setItem('authUser', full_name);
-        setUser(full_name);
+    const authUserFunc = (nameORsername, authToken) => {
+        // here acceptign full_name on if pub-acc isn't available
+
+        if (nameORsername) {
+            localStorage.setItem('authUser', nameORsername);
+            setUser(nameORsername);
+        }
 
         if (authToken) {
             localStorage.setItem('token', authToken);
