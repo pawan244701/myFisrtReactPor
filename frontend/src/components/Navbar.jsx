@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
 import styles from './Navbar.module.css';
+import { PostFeed } from '../pages/PostFeed';
 
 export const Navbar = ({ logoSrc }) => {
     const { isAuthorized, logout, isVisible, profileDetails } = useAuth();
@@ -62,6 +63,8 @@ export const Navbar = ({ logoSrc }) => {
                         Profile
                     </Link>
                 )}
+                <Link to='/feed' className={styles['nav-links']}>Feed</Link>
+
                 {isAuthorized && !isVisible && (
                     <Link
                         to='/be-visible'
