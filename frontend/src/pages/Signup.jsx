@@ -106,7 +106,7 @@ export const Signup = () => {
 
         try {
             // import.meta.env.VITE_VERIFY_OTP_API
-            const response = await fetch('http://localhost:9999/signup', {
+            const response = await fetch(import.meta.env.VITE_VERIFY_OTP_API, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
