@@ -44,7 +44,8 @@ export const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                authUserFunc(data.full_name, data.token);
+                const userIdentifier = data.username || data.full_name;
+                authUserFunc(userIdentifier, data.token);
                 navigate(`/`);
             }
             else {
@@ -55,6 +56,7 @@ export const Login = () => {
             if (error.message === "Failed to fetch") {
                 setError('Unable to reach Server. Please try again in a few seconds!');
             } else {
+                console.log("ldkjfjdflkj", error);
                 setError('An unexpected error occured. Please try again!');
             }
         }
