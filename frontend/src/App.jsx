@@ -19,6 +19,7 @@ import logoImg from "./assets/logoImg/kali.png";
 import { CreatePublicProfile } from './pages/CreatePublicProfile';
 import { AllPublicUsersProfile } from './pages/AllPublicUsersProfile';
 import { EditProfile } from './pages/EditProfile';
+import { PostFeed } from './pages/PostFeed';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/be-visible' element={<CreatePublicProfile />} />
           <Route path='/edit-profile' element={<EditProfile />} />
+          <Route path='/feed' element={<PostFeed />} />
 
           <Route path='/:username' element={<UserProfile />} />
 
