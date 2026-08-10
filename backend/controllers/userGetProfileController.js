@@ -52,7 +52,7 @@ export const getMyProfile = async (req, res) => {
             profile: rows[0]
         });
     } catch (error) {
-        // console.error("Get My Profile Error:", error);
+        console.error("Get My Profile Error:", error);
         return res.status(500).json({
             message: "Server error checking profile."
         });
