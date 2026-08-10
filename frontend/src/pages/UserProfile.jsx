@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import styles from './UserProfile.module.css';
+import { MakeTextPosts } from '../components/MakeTextPosts';
 
 export const UserProfile = () => {
     const { username } = useParams(); // Reads username from URL /profile/:username
@@ -72,9 +73,11 @@ export const UserProfile = () => {
                 <div className={styles['edit-link']}>
                     {
                         isOwner ? (
-                            <Link to="/edit-profile" className={styles['edit-button']}>
-                                Edit Profile
-                            </Link>
+                            <div>
+                                <Link to="/edit-profile" className={styles['edit-button']}>
+                                    Edit Profile
+                                </Link>
+                            </div>
                         ) : (
                             <Link to="/explore" className={styles['edit-button']}>
                                 Back
@@ -82,6 +85,7 @@ export const UserProfile = () => {
                         )
                     }
                 </div>
+                <MakeTextPosts isOwner={isOwner} username={profile.username} />
             </div>
         </div>
     );
