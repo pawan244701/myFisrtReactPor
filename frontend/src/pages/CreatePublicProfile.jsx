@@ -106,7 +106,7 @@ export const CreatePublicProfile = () => {
 
             if (response.ok) {
                 await checkUserProfile(token);
-                navigate(`/profile`);
+                navigate(`/${formData.username}`);
             } else {
                 setError(data.message || 'Something went wrong! Please try again.');
             }

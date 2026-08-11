@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { pool } from '../config/database.js';
+import jwt from 'jsonwebtoken';
 
 export const verifySignUpOtp = async (req, res) => {
     const { email, otpCode } = req.body;
@@ -21,7 +22,7 @@ export const verifySignUpOtp = async (req, res) => {
             });
         }
 
-        await pool.query(
+        const [result] = await pool.query(
             "INSERT INTO users (full_name, email, password) VALUES (?,?,?)",
             [pendingUser.full_name, pendingUser.email, pendingUser.password]
         );
@@ -29,8 +30,18 @@ export const verifySignUpOtp = async (req, res) => {
             "DELETE FROM pendingVerificationUsers WHERE email = ?",
             [email]
         );
+        // creating jwt payload
+        const payload = {
+            userId: result.insertId,
+            email: pendingUser.email,
+            full_name: pendingUser.full_name
+        };
+        const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '1d' });
+
         return res.status(201).json({
-            message: 'Email verified successfully!'
+            message: 'Email verified successfully!',
+            token: token,
+            full_name: pendingUser.full_name
         });
 
     } catch (error) {

@@ -25,18 +25,26 @@ export const userLogin = async (req, res) => {
             });
         }
 
+        const [publicAccCheck] = await pool.query(
+            "SELECT * FROM userPublicProfile WHERE user_id = ? LIMIT 1",
+            [userExists.id]
+        );
+        const username = publicAccCheck.length > 0 ? publicAccCheck[0].username : null;
+
         // creatinf jwt payload
         const payload = {
             userId: userExists.id,
             email: userExists.email,
-            full_name: userExists.full_name
+            full_name: userExists.full_name,
+            username: username
         };
         const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '1d'});
 
         return res.status(200).json({
             message: "Login successful",
             token: token,
-            full_name: userExists.full_name
+            full_name: userExists.full_name,
+            username: username
         });
 
     } catch (err) {

@@ -31,7 +31,7 @@ export const createPublicProfile = async (req, res) => {
 
     if (!userId) {
         return res.status(401).json({
-            message: 'Unauthorized. Login again first!.'
+            message: 'Unauthorized. Login again first!.' // got this error msg now while creatign public acc time
         });
     }
 
