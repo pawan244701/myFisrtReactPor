@@ -1,5 +1,5 @@
 import styles from './EditProfile.module.css';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -88,7 +88,7 @@ export const EditProfile = () => {
                     area: '',
                     country: ''
                 });
-                navigate('/home');
+                navigate(`/${user}`); // why this is not working
             } else {
                 setError(data.message || 'Something went wrong! Please try again.');
             }

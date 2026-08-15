@@ -127,7 +127,7 @@ export const Signup = () => {
                 setError(data.message || 'Verification failed. Invalid or Expired Otp. Please signup again.');
             }
         } catch (error) {
-            setError('Server connection Error. Please try again.');
+            setError('Server connection Error. Please try again.', error);
         } finally {
             setIsLoading(false);
         }
