@@ -46,6 +46,6 @@
     "esModuleInterop": true,          /* Allows clean imports for older packages */
     "skipLibCheck": true,
   },
-  "include": ["**/*"],                /* Scan all files in all folders */
+  "include": ["**/*.ts", "**/*.js"],                /* Scan all files in all folders */
   "exclude": ["node_modules", "dist"] /* Ignore third-party packages and built code */
 }

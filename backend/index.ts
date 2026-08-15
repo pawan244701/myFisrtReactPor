@@ -2,7 +2,6 @@ import 'dotenv/config';
 import express from 'express';
 import { json } from 'express';
 import cors from 'cors';
-import { pool } from './config/database.js';
 import { router } from './routes/allRoute.js';
 import helmet from 'helmet';
 import { corsFuncAllowedOrigins } from './middlewares/corsMiddle.js'
