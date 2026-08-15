@@ -2,9 +2,7 @@ import express from 'express';
 import { authLimiter } from '../middlewares/rateLimiter.js';
 
 import { validate } from '../middlewares/validateMiddle.js';
-import { signupSchema } from '../schema/userSchema.js';
-import { loginSchema } from '../schema/userSchema.js';
-import { verifyOtpSchema } from '../schema/userSchema.js';
+import { signupSchema, loginSchema, verifyOtpSchema } from '../schema/userSchema.js';
 
 import { verifyToken } from '../middlewares/jwtAuthMiddle.js';
 
