@@ -1,0 +1,51 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./",
+    "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "module": "nodenext",
+    "target": "es2022",
+    "moduleResolution": "NodeNext",    /* Follow Node's rules for finding import paths */
+    // "types": [],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    "allowJs": true,                  /* ALLOW .js files to exist alongside .ts files */
+    "checkJs": false,                 /* Don't throw TS errors in un-migrated .js files */
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    "strict": true,
+    // "jsx": "react-jsx",
+    // "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "esModuleInterop": true,          /* Allows clean imports for older packages */
+    "skipLibCheck": true,
+  },
+  "include": ["**/*"],                /* Scan all files in all folders */
+  "exclude": ["node_modules", "dist"] /* Ignore third-party packages and built code */
+}
