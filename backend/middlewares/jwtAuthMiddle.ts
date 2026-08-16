@@ -1,16 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-interface AuthenicationRequest extends Request {
-    user?: string | jwt.JwtPayload;
-}
-
 // jwt token: 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 // .eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0
 // .KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30
 
-export const verifyToken = (req: AuthenicationRequest, res: Response, next: NextFunction) => {
+export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
 
     // Express automatically parses incoming HTTP headers 
     // into a lower-case JavaScript object (req.headers), 
