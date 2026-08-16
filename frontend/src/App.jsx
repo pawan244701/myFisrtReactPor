@@ -8,7 +8,6 @@ import { Signup } from './pages/Signup';
 import { Privacy } from './pages/Privacy';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
-import { Games } from './pages/Games';
 import { UserProfile } from './pages/UserProfile';
 
 import styles from './App.module.css';
