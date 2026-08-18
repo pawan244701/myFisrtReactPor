@@ -11,7 +11,7 @@ export const Privacy = () => {
         <main className={styles['main-container']}>
             <h1>Privacy Policy</h1>
             <hr />
-            <p>Last Updated: <strong>29 July 2026</strong></p>
+            <p>Last Updated: <strong>18 August 2026</strong></p>
             <section className={styles['info-cards']}>
                 <h3>1. Overview: </h3>
                 <p>
@@ -25,8 +25,8 @@ export const Privacy = () => {
             <section className={styles['info-cards']}>
                 <h3>2. Information We Collect: </h3>
                 <p>
-                    To verify genuine human users and facilitate communication, we collect
-                    the following information when you register or interact with the site:
+                    To verify genuine human users, improve service quality, and facilitate communication, we collect
+                    the following information when you visit, register, or interact with the site:
                 </p>
                 <ul>
                     <li>
@@ -47,6 +47,12 @@ export const Privacy = () => {
                             the message form.
                         </p>
                     </li>
+                    <li>
+                        <p>
+                            <strong>Visitor & Traffic Logs: </strong> Your IP address, visited endpoints, and timestamps
+                            are automatically logged when accessing pages or endpoints across the website.
+                        </p>
+                    </li>
                 </ul>
             </section>
 
@@ -56,7 +62,12 @@ export const Privacy = () => {
                 <ul>
                     <li>
                         <p>
-                            To prevent automated bot spam and abuse on the messaging system.
+                            To prevent automated bot spam, rate-limit requests, and safeguard the site against abuse.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            To monitor website traffic, analyze endpoint usage, and ensure backend stability.
                         </p>
                     </li>
                     <li>
