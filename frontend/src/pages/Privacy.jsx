@@ -1,5 +1,12 @@
-import styles from './Privacy.module.css'
+import styles from './Privacy.module.css';
+import { useEffect } from 'react';
+
 export const Privacy = () => {
+    useEffect(() => {
+        // Send a silent ping to your backend API
+        fetch(import.meta.env.VITE_PRIVACY_IP_LOGER_API)
+            .catch((err) => console.error('Failed to log page visit:', err));
+    }, []);
     return (
         <main className={styles['main-container']}>
             <h1>Privacy Policy</h1>
