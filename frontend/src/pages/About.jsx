@@ -1,16 +1,21 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './About.module.css'
+import { useEffect } from 'react';
 
 export const About = () => {
+  useEffect(() => {
+    // Send a silent ping to your backend API
+    fetch(import.meta.env.VITE_ABOUT_IP_LOGER_API)
+      .catch((err) => console.error('Failed to log page visit:', err));
+  }, []);
   return (
     <main className={styles['main-container']}>
       <header className={styles['header-container']}>
         <h1>About This Portfolio & Experiments Site</h1>
         <p>
           <strong>Live Site: </strong>
-          <a 
-            href="https://pawan244701-react.onrender.com" 
+          <a
+            href="https://pawan244701-react.onrender.com"
             rel="noopener noreferrer"
             className={styles['link']}
           >
@@ -23,12 +28,12 @@ export const About = () => {
         <h2>Hi, I am Pawan Yadav — Eager to Learn Every Single New Thing</h2>
         <article>
           <p>
-            This is a portfolio and experiments site that is constantly evolving. 
-            Created by <strong>Pawan Yadav</strong>, this project serves as a hands-on lab for learning 
+            This is a portfolio and experiments site that is constantly evolving.
+            Created by <strong>Pawan Yadav</strong>, this project serves as a hands-on lab for learning
             React.js and locking core concepts into muscle memory.
           </p>
           <p>
-            While constantly growing, the primary objective is to build a modern, fully responsive, 
+            While constantly growing, the primary objective is to build a modern, fully responsive,
             and visually appealing web application.
           </p>
         </article>
@@ -73,7 +78,7 @@ export const About = () => {
       <section className={styles['main-section']}>
         <h2>Project Source & Social Media</h2>
         <p>
-          Want to review the code? The blueprint of this platform is entirely open-source. 
+          Want to review the code? The blueprint of this platform is entirely open-source.
           Explore the architecture or connect with me via the platforms below:
         </p>
 
@@ -81,10 +86,10 @@ export const About = () => {
           <ul>
             <li>
               <span>Inspect the source code on: </span>
-              <a 
-              className={styles['link']}
-                href="https://github.com/pawan244701/" 
-                target="_blank" 
+              <a
+                className={styles['link']}
+                href="https://github.com/pawan244701/"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 GitHub
@@ -92,10 +97,10 @@ export const About = () => {
             </li>
             <li>
               <span>Connect with me on: </span>
-              <a 
-              className={styles['link']}
-                href="https://linkedin.com/in/pawan244701/" 
-                target="_blank" 
+              <a
+                className={styles['link']}
+                href="https://linkedin.com/in/pawan244701/"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 LinkedIn
@@ -103,10 +108,10 @@ export const About = () => {
             </li>
             <li>
               <span>Follow me on: </span>
-              <a 
-              className={styles['link']}
-                href="https://x.com/pawan244701/" 
-                target="_blank" 
+              <a
+                className={styles['link']}
+                href="https://x.com/pawan244701/"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 X (Twitter)
