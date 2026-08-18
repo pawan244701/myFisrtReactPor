@@ -16,6 +16,12 @@ import { getMyProfile, getPublicProfile, getAllPublicProfiles } from '../control
 import { createPublicTextPosts, getMyPublicTextPosts, getAllPublicPosts, getPostsByUsername } from '../controllers/userPublicTextPosts.js';
 export const router = express.Router();
 
+
+router.get('/log-visit', (req, _res) => {
+    const visitedPage = req.query.page;
+    console.log("visit: ", visitedPage);
+});
+
 router.post('/signup', authLimiter, validate(signupSchema), tempUserSignup);
 router.post('/verify-otp', authLimiter, validate(verifyOtpSchema), verifySignUpOtp);
 router.post('/login', authLimiter, validate(loginSchema), userLogin);
