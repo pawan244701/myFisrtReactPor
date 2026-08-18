@@ -7,7 +7,17 @@ export const ipLogger = async (req: Request, _res: Response, next: NextFunction)
         return next();
     }
     try {
-        const visitorIp = req.ip || req.socket.remoteAddress || '0.0.0.0';
+        // 1. Explicitly check the proxy header Render provides
+        const forwardedHeader = req.headers['x-forwarded-for'];
+
+        let realIp;
+        let visitorIp = realIp;
+        if (typeof forwardedHeader === 'string') {
+            realIp = forwardedHeader.split(',')[0]?.trim();
+        } else {
+            realIp = req.ip || req.socket.remoteAddress || '0.0.0.0';
+        }
+
         const visited_at = new Date();
         const visited_path = req.url;
 
