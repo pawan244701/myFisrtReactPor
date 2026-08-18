@@ -11,7 +11,6 @@ export const ipLogger = async (req: Request, _res: Response, next: NextFunction)
         const forwardedHeader = req.headers['x-forwarded-for'];
 
         let realIp;
-        let visitorIp = realIp;
         if (typeof forwardedHeader === 'string') {
             realIp = forwardedHeader.split(',')[0]?.trim();
         } else {
@@ -26,7 +25,7 @@ export const ipLogger = async (req: Request, _res: Response, next: NextFunction)
         await pool.query(
             `INSERT INTO visitor_logs (visited_at, ip_address, endpoint) 
        VALUES (?, ?, ?)`,
-            [visited_at, visitorIp, visited_path]
+            [visited_at, realIp, visited_path]
         );
         console.log("data asved in DB successfully");
     } catch (error) {
