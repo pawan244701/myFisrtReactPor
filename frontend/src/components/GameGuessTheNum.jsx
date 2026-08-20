@@ -18,7 +18,7 @@ export const GameGuessTheNum = () => {
         setAttempts(5);
         setIsRevealed(false);
         setUserGuess('');
-        setMessage('Guess a 2 digit number!');
+        setMessage('🤔Guess a 2 digit number!');
     }
 
     const handleCheck = (e) => {
@@ -26,7 +26,7 @@ export const GameGuessTheNum = () => {
         const guessedNum = parseInt(userGuess);
 
         if (isNaN(guessedNum)) {
-            setMessage('Please enter a valid number!');
+            setMessage('❌Please enter a valid Number!❌');
             return;
         }
         const updatedAttempts = attempts - 1;
@@ -34,12 +34,12 @@ export const GameGuessTheNum = () => {
 
         if (guessedNum === targetNum) {
             setIsRevealed(true);
-            setMessage('You win!Correct Guess.');
+            setMessage('🥳 You win! 🎉');
         } else if (updatedAttempts === 0) {
             setIsRevealed(true);
-            setMessage('Opps! You lose! No warries try again');
+            setMessage('😔Opps! You lose! No worries try again');
         } else if (guessedNum < targetNum) {
-            setMessage('Too low! Try a hingher number');
+            setMessage('Too low! Try a higher number');
         } else {
             setMessage('Too high! Try a lower number');
         }
@@ -48,10 +48,10 @@ export const GameGuessTheNum = () => {
     return (
         <div className={styles['main-div']}>
             {!isPlaying ? (
-                <div>
+                <div className={styles['play-div']}>
                     <h1>Guess The Num</h1>
+                    <p>You'll get only 5 attempts to Guess</p>
                     <button type="submit" onClick={handlePlay}>Play</button>
-
                 </div>
             ) : (
                 <div className={styles['second-div']}>
@@ -62,6 +62,8 @@ export const GameGuessTheNum = () => {
                             <Link to='/' className={styles['go-back-link']}>Go Back</Link>
                         </>
                     ) : (
+                        <>
+                        <h3>Attempts left: <strong>{attempts}</strong></h3>
                         <form className={styles['input-form']}>
                             <input type="number"
                                 value={userGuess}
@@ -70,7 +72,7 @@ export const GameGuessTheNum = () => {
                                 disabled={isRevealed}
                             />
                             <button type="submit" onClick={handleCheck}>Check</button>
-                        </form>
+                        </form></>
                     )}
                 </div>
             )}
