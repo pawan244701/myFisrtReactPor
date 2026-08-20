@@ -8,20 +8,29 @@
     background-color: transparent;
 }
 
-.main-div h1 {
-    font-size: 2.5rem;
+.play-div h1 {
+    font-size: 2.25rem;
     color: #262626;
     margin-bottom: 1rem;
 }
 
+.main-div p {
+    font-size: 1rem;
+    color: #262626;
+    margin-bottom: 1rem;
+}
+
+.play-div,
 .second-div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
     width: 100%;
     max-width: 350px;
     padding: 2rem;
+    background-color: #cfd1d0;
+    border-radius: 1rem;
+    box-shadow: 1rem 2rem 4rem #003b0a;
 }
 
 .second-div p {
@@ -29,6 +38,14 @@
     font-weight: 500;
     color: #404142;
     text-align: center;
+}
+
+.second-div h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #404142;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .input-form {
