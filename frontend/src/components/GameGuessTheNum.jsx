@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
+import styles from './GameGuessTheNum.module.css';
 
 export const GameGuessTheNum = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -45,20 +46,23 @@ export const GameGuessTheNum = () => {
     }
 
     return (
-        <div>
-            <h1>Guess The Num</h1>
+        <div className={styles['main-div']}>
             {!isPlaying ? (
-                <button type="submit" onClick={handlePlay}>Play</button>
-            ) : (
                 <div>
+                    <h1>Guess The Num</h1>
+                    <button type="submit" onClick={handlePlay}>Play</button>
+
+                </div>
+            ) : (
+                <div className={styles['second-div']}>
                     <p>{message}</p>
                     {isRevealed ? (
                         <>
                             <button onClick={handlePlay}>Play Again</button>
-                            <Link to='/'>Go Back</Link>
+                            <Link to='/' className={styles['go-back-link']}>Go Back</Link>
                         </>
                     ) : (
-                        <form>
+                        <form className={styles['input-form']}>
                             <input type="number"
                                 value={userGuess}
                                 onChange={(e) => setUserGuess(e.target.value)}
