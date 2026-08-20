@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 // my own files imports
 import { Home } from './pages/Home';
@@ -22,6 +21,9 @@ import { PostFeed } from './pages/PostFeed';
 import { GameGuessTheNum } from './components/GameGuessTheNum';
 
 function App() {
+  const location = useLocation();
+  const noFooterRoutes = ['/games', '/explore', '/signup', '/login', '/feed', '/edit-profile', '/contact'];
+  const showFooter = !noFooterRoutes.includes(location.pathname);
   return (
     <div className={styles['app-container']}>
       <Navbar logoSrc={logoImg} />
@@ -50,7 +52,7 @@ function App() {
           {/* NOte : here should not be any tralling spaces like: path='/games ' it should be path='/games' othetwise it won't work */}
         </Routes>
       </main>
-      <Footer />
+      {showFooter && <Footer />}
     </div>
   )
 }
