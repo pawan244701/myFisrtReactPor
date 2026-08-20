@@ -1,0 +1,87 @@
+.main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+    background-color: transparent;
+}
+
+.main-div h1 {
+    font-size: 2.5rem;
+    color: #262626;
+    margin-bottom: 1rem;
+}
+
+.second-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 350px;
+    padding: 2rem;
+}
+
+.second-div p {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #404142;
+    text-align: center;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+
+.input-form input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input-form input:focus {
+    border-color: #003b0a;
+}
+
+.main-div button {
+    width: 100%;
+    max-width: 350px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: #049c3e;
+    border: 1px solid #003b17;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.main-div button:hover {
+    background-color: #03c44d;
+}
+
+.go-back-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #64748b;
+    font-weight: 555;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.go-back-link:hover {
+    color: #1e293b;
+    text-decoration: underline;
+}
