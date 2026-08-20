@@ -77,6 +77,7 @@ export const Navbar = ({ logoSrc }) => {
 
 
                 <Link to='/explore' className={styles['nav-links']}>Explore</Link>
+                <Link to='/games' className={styles['nav-links']}>Games</Link>
 
                 <Link to='/contact' className={styles['nav-links']}>Contact</Link>
 
