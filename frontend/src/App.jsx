@@ -19,6 +19,7 @@ import { CreatePublicProfile } from './pages/CreatePublicProfile';
 import { AllPublicUsersProfile } from './pages/AllPublicUsersProfile';
 import { EditProfile } from './pages/EditProfile';
 import { PostFeed } from './pages/PostFeed';
+import { GameGuessTheNum } from './components/GameGuessTheNum';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path='/be-visible' element={<CreatePublicProfile />} />
           <Route path='/edit-profile' element={<EditProfile />} />
           <Route path='/feed' element={<PostFeed />} />
+          <Route path='/games' element={<GameGuessTheNum />} />
 
           <Route path='/:username' element={<UserProfile />} />
 
